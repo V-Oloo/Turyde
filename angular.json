@@ -20,11 +20,16 @@
               "src/assets"
             ],
             "styles": [
+
+              "node_modules/datatables.net-bs4/css/dataTables.bootstrap4.css",
               "node_modules/@coreui/icons/css/coreui-icons.css",
               "node_modules/flag-icon-css/css/flag-icon.css",
               "node_modules/font-awesome/css/font-awesome.css",
               "node_modules/simple-line-icons/css/simple-line-icons.css",
-              "src/scss/style.scss"
+              "src/scss/style.scss",
+              "node_modules/ngx-select-dropdown/dist/assets/style.css",
+              "node_modules/select2/dist/css/select2.min.css"
+
             ],
             "stylePreprocessorOptions": {
               "includePaths": [
@@ -32,7 +37,12 @@
               ]
             },
             "scripts": [
+              "node_modules/jquery/dist/jquery.js",
+              "node_modules/select2/dist/js/select2.full.js",
+              "node_modules/datatables.net/js/jquery.dataTables.js",
+              "node_modules/datatables.net-bs4/js/dataTables.bootstrap4.js",
               "node_modules/chart.js/dist/Chart.min.js"
+
             ]
           },
           "configurations": {

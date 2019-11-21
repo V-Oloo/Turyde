@@ -1,3 +1,5 @@
+import { LandingpageComponent } from './landingpage/landingpage.component';
+import { RegisterCompanyComponent } from './views/register-company/register-company.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
@@ -8,12 +10,29 @@ import { P404Component } from './views/error/404.component';
 import { P500Component } from './views/error/500.component';
 import { LoginComponent } from './views/login/login.component';
 import { RegisterComponent } from './views/register/register.component';
+import { AuthGuard } from './guards/auth.guard';
+import { MainAuthGuard } from './guards/main-auth.guard';
 
 export const routes: Routes = [
   {
     path: '',
-    redirectTo: 'dashboard',
+    redirectTo: '/home',
     pathMatch: 'full',
+  },
+  {
+    path: 'home',
+    component: LandingpageComponent,
+    data: {
+      title: 'Home'
+    }
+  },
+  {
+    path: 'login',
+    component: LoginComponent,
+    canActivate: [AuthGuard],
+    data: {
+      title: 'Login Page'
+    }
   },
   {
     path: '404',
@@ -30,13 +49,6 @@ export const routes: Routes = [
     }
   },
   {
-    path: 'login',
-    component: LoginComponent,
-    data: {
-      title: 'Login Page'
-    }
-  },
-  {
     path: 'register',
     component: RegisterComponent,
     data: {
@@ -44,12 +56,30 @@ export const routes: Routes = [
     }
   },
   {
+    path: 'register_company',
+    component: RegisterCompanyComponent,
+    data: {
+      title: 'Register company Page'
+    }
+  },
+  {
     path: '',
     component: DefaultLayoutComponent,
+     canActivate: [MainAuthGuard],
+    // canActivateChild: [MainAuthGuard],
+     canLoad: [MainAuthGuard],
     data: {
       title: 'Home'
     },
     children: [
+      {
+        path: 'dashboard',
+        loadChildren: () => import('./views/dashboard/dashboard.module').then(m => m.DashboardModule)
+      },
+      {
+        path: 'company',
+        loadChildren: () => import('./views/company/company.module').then(m => m.CompanyModule)
+      },
       {
         path: 'base',
         loadChildren: () => import('./views/base/base.module').then(m => m.BaseModule)
@@ -63,20 +93,12 @@ export const routes: Routes = [
         loadChildren: () => import('./views/chartjs/chartjs.module').then(m => m.ChartJSModule)
       },
       {
-        path: 'dashboard',
-        loadChildren: () => import('./views/dashboard/dashboard.module').then(m => m.DashboardModule)
-      },
-      {
         path: 'icons',
         loadChildren: () => import('./views/icons/icons.module').then(m => m.IconsModule)
       },
       {
         path: 'notifications',
         loadChildren: () => import('./views/notifications/notifications.module').then(m => m.NotificationsModule)
-      },
-      {
-        path: 'theme',
-        loadChildren: () => import('./views/theme/theme.module').then(m => m.ThemeModule)
       },
       {
         path: 'widgets',

@@ -1,1 +1,17 @@
-// Here you can add other styles
+.login-bg {
+  background: url(../assets/img/bg.jpg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.login-gray {
+  background: url(../assets/img/gray-bg.jpg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+$body-bg: transparent;

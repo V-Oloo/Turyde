@@ -1,3 +1,4 @@
+import { SharedModule } from './../../shared/shared.module';
 // Angular
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
@@ -19,13 +20,12 @@ import { NotificationsRoutingModule } from './notifications-routing.module';
   imports: [
     CommonModule,
     NotificationsRoutingModule,
-    AlertModule.forRoot(),
-    ModalModule.forRoot()
+    SharedModule,
   ],
   declarations: [
     AlertsComponent,
     BadgesComponent,
     ModalsComponent
-  ]
+  ],
 })
 export class NotificationsModule { }

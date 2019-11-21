@@ -1,0 +1,56 @@
+<div class="app-body">
+  <main class="main d-flex align-items-center">
+    <div class="container">
+      <div class="row mt-5">
+        <div class="col-md-6 mx-auto">
+          <div class="card mx-4">
+            <div class="card-body p-4">
+              <form [formGroup]="companyForm">
+
+                <div class="login-form-header text-center">
+                  <img src="../../../assets/img/brand/logo.png" alt="login-icon" style="max-width:150px">
+                  <div class="login-header">
+                      <h4 class="bold color-white">CREATE BUSINESS PROFILE</h4>
+                  </div>
+                </div>
+
+                <!-- <div *ngIf="errMessage" class="alert alert-danger" role="alert">
+                    {{errMessage}}
+                  </div> -->
+
+                <div class="form-row">
+                  <div class="col mb-3">
+                    <input type="text" [class.is-invalid] = "companyName.invalid && companyName.touched" formControlName="companyName" class="form-control" placeholder="Company name">
+                    <div *ngIf="companyName.invalid && companyName.touched">
+                        <small class="text-danger" *ngIf="companyName['errors']['required']">Company name is required</small>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-row">
+
+                  <div class="col mb-3">
+                    <input type="text" [class.is-invalid] = "countryCode.invalid && countryCode.touched" formControlName="countryCode" class="form-control" placeholder="Country code">
+                    <div *ngIf="countryCode.invalid && countryCode.touched">
+                        <small class="text-danger" *ngIf="countryCode['errors']['required']">country code is required</small>
+                    </div>
+                  </div>
+
+                  <div class="col mb-3">
+                    <input type="text" [class.is-invalid] = "currencyCode.invalid && currencyCode.touched" formControlName="currencyCode" class="form-control" placeholder="Currency code">
+                    <div *ngIf="currencyCode.invalid && currencyCode.touched">
+                        <small class="text-danger" *ngIf="currencyCode['errors']['required']">Currency code is required</small>
+                    </div>
+                  </div>
+                </div>
+
+                <button type="button" [disabled]="companyForm.invalid" (click)="registerCompany(companyForm.value)" class="btn btn-block btn-success">Submit</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+
