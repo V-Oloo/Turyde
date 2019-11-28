@@ -1,15 +1,32 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { ModalDirective } from 'ngx-bootstrap/modal';
+import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-drivers',
   templateUrl: './drivers.component.html',
-  styleUrls: ['./drivers.component.css']
+  styleUrls: []
 })
 export class DriversComponent implements OnInit {
+  createUser: FormGroup;
+  @ViewChild('myModal') public myModal: ModalDirective;
+  dtOptions: DataTables.Settings = {};
 
-  constructor() { }
+  public status = 'suspended';
+  constructor(private fb: FormBuilder) {}
 
-  ngOnInit() {
+  ngOnInit(): void {
+    // vehicle form starts here
+    this.createUser = this.fb.group ({
+      firstName: ['', [Validators.required]],
+      lastName: ['', [Validators.required]],
+      phoneNumber: [''],
+      email: ['', [Validators.required]],
+      boundary: ['', [Validators.required]],
+    });
+
+    this.dtOptions = {
+      pagingType: 'full_numbers'
+    };
   }
-
 }

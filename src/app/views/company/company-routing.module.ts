@@ -1,3 +1,4 @@
+import { UpdateCompanyComponent } from './update-company.component';
 import { VehiclesComponent } from './vehicles.component';
 import { DriversComponent } from './drivers.component';
 import { NgModule } from '@angular/core';
@@ -14,6 +15,13 @@ const routes: Routes = [
       {
         path: '',
         redirectTo: 'drivers'
+      },
+      {
+        path: 'update-company',
+        component: UpdateCompanyComponent,
+        data: {
+          title: 'Update Company'
+        }
       },
       {
         path: 'vehicles',

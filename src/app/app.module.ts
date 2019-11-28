@@ -39,23 +39,19 @@ import {
 import { AppRoutingModule } from './app.routing';
 
 // Import 3rd party components
-import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
-import { TabsModule } from 'ngx-bootstrap/tabs';
 import { ChartsModule } from 'ng2-charts';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TokenInterceptorService } from './interceptors/token-interceptor.service';
 import { InternationalPhoneNumberModule } from 'ngx-international-phone-number';
 import { LandingpageComponent } from './landingpage/landingpage.component';
-
+import { Globals } from './global';
+import { CreatePasswordComponent } from './views/create-password/create-password.component';
 
 
 @NgModule({
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    // FormsModule,
-    // ReactiveFormsModule,
     InternationalPhoneNumberModule,
     HttpClientModule,
     AppRoutingModule,
@@ -65,8 +61,6 @@ import { LandingpageComponent } from './landingpage/landingpage.component';
     AppHeaderModule,
     AppSidebarModule,
     PerfectScrollbarModule,
-    // BsDropdownModule.forRoot(),
-    // TabsModule.forRoot(),
     ChartsModule,
     SharedModule
   ],
@@ -79,8 +73,11 @@ import { LandingpageComponent } from './landingpage/landingpage.component';
     RegisterComponent,
     RegisterCompanyComponent,
     LandingpageComponent,
+    CreatePasswordComponent,
   ],
-  providers: [{
+  providers: [
+    Globals,
+    {
     provide: LocationStrategy,
     useClass: HashLocationStrategy
   },

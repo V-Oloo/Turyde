@@ -32,17 +32,22 @@ export class RegisterComponent implements OnInit {
   }
 
   onSubmit(form: SignUp) {
-     this.service.registerUser(form).subscribe((res: any) => {
-      if (res) {
-        this.successMessage = 'Confrimation Mail has been sent to your account.';
-        localStorage.setItem('JWT_TOKEN', res.accessToken);
-      }
+    if (this.registrationForm.valid) {
 
-    },
-    (err: any) => {
-      console.log(err);
+      this.service.registerUser(form).subscribe((res: any) => {
+        if (res) {
+          this.successMessage = 'Confrimation Mail has been sent to your account.';
+          localStorage.setItem('JWT_TOKEN', res.accessToken);
+        }
+
+      },
+      (err: any) => {
+        console.log(err);
+      }
+    );
+
     }
-  );
+
   }
 
 }

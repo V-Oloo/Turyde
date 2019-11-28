@@ -3,14 +3,13 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DataTablesModule } from 'angular-datatables';
 import { NgbDatepickerModule } from '@ng-bootstrap/ng-bootstrap';
-import { NgSelect2Module } from 'ng-Select2';
 import { TabsModule } from 'ngx-bootstrap/tabs';
-import { SelectDropDownModule } from 'ngx-select-dropdown';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { ButtonsModule } from 'ngx-bootstrap/buttons';
 import { AlertModule } from 'ngx-bootstrap/alert';
-
+import { NgxSelectModule } from 'ngx-select-ex';
+// import {Grid} from '@ag-grid-community/all-modules';
 
 
 @NgModule({
@@ -21,13 +20,13 @@ import { AlertModule } from 'ngx-bootstrap/alert';
     ReactiveFormsModule,
     DataTablesModule,
     NgbDatepickerModule,
-    NgSelect2Module,
-    TabsModule,
-    SelectDropDownModule,
+    TabsModule.forRoot(),
     ModalModule.forRoot(),
     ButtonsModule,
+    NgxSelectModule,
     BsDropdownModule.forRoot(),
     AlertModule.forRoot(),
+    // Grid
   ],
   exports: [
     CommonModule,
@@ -35,13 +34,13 @@ import { AlertModule } from 'ngx-bootstrap/alert';
     ReactiveFormsModule,
     DataTablesModule,
     NgbDatepickerModule,
-    NgSelect2Module,
     TabsModule,
-    SelectDropDownModule,
     ModalModule,
+    NgxSelectModule,
     ButtonsModule,
     BsDropdownModule,
-    AlertModule
+    AlertModule,
+    // Grid
   ]
 })
 export class SharedModule { }

@@ -56,82 +56,85 @@
   <div bsModal #largeModal="bs-modal" [config]="{backdrop: 'static'}" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
       <div class="modal-content">
-        <div class="modal-header">
-          <h4 class="modal-title">Add Vehicle</h4>
-          <button type="button" class="close" (click)="largeModal.hide()" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-            <div class="row">
-                <div class="form-group col-sm-6">
-                  <label for="city">Name</label>
-                  <input type="text" class="form-control" id="city" placeholder="Driver Name">
-                </div>
-                <div class="form-group col-sm-6">
-                  <label for="postal-code">Email</label>
-                  <input type="Email" class="form-control" id="postal-code" placeholder="Email Address">
-                </div>
-            </div><!--/.row-->
-            <div class="row">
-                <div class="form-group col-sm-6">
-                  <label for="city">City</label>
-                  <input type="text" class="form-control" id="city" placeholder="Enter your city">
-                </div>
-                <div class="form-group col-sm-6">
-                  <label for="postal-code">Postal Code</label>
-                  <input type="text" class="form-control" id="postal-code" placeholder="Postal Code">
-                </div>
-            </div><!--/.row-->
-            <div class="row">
-               <div class="form-group col-sm-6">
-                  <label for="postal-code">Date Of Birth</label>
-                  <div class="input-group">
+        <form [formGroup]="addVehicleForm">
+            <!-- {{addVehicleForm.value | json}} -->
+            <div class="modal-header">
+                <h4 class="modal-title">Add Vehicle</h4>
+                <button type="button" class="close" (click)="largeModal.hide()" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
 
-                    <div class="input-group-prepend">
-                        <button class="fa fa-calendar" (click)="d.toggle()" type="button"></button>
-                    </div>
-                    <input class="form-control" placeholder="yyyy-mm-dd" name="dp" ngbDatepicker #d="ngbDatepicker">
-                  </div>
-               </div>
-               <div class="form-group col-sm-6">
-                  <label for="postal-code">Postal Code</label>
-                  <div class="input-group">
-                      <ng-select2 [data]="exampleData" [width]="360" [options]="options"></ng-select2>
-                  </div>
-
-                </div>
-
-            </div>
-             <div class="row">
-                <div class="form-group col-sm-6">
-                    <label for="postal-code">Date Of Birth</label>
-                    <div class="input-group">
-                        <div class="custom-file">
-                            <input type="file" class="custom-file-input" id="customFile">
-                            <label class="custom-file-label" for="customFile">Choose file</label>
+                  <div class="row">
+                      <div class="col-md-4">
+                          <label>Reistration No. *</label>
+                          <div class="form-group">
+                              <input type="text" class="form-control" formControlName="regNo" id="city" placeholder="Vehicle Name">
                           </div>
                       </div>
+                      <div class="example-block col-md-4">
+                          <label>Vehicle Type *</label>
+                          <div class="form-group">
+                              <ngx-select
+                              formControlName="vehicleTypeId"
+                              [allowClear]="true"
+                              optionValueField="id" optionTextField="type"
+                              [items]="option"
+                              placeholder="No type selected">
+                             </ngx-select>
 
-                </div>
-                <div class="form-group col-sm-6">
-                  <label for="postal-code">Postal Code</label>
-                  <div class="input-group">
-                    <div class="col s6 l6">
-                      <ngx-select-dropdown [multiple]="false" [config]="config" [options]="option"></ngx-select-dropdown>
+                          </div>
+                      </div>
+                      <div class="col-md-4">
+                          <label>No. of Seats *</label>
+                          <div class="form-group">
+                              <input type="number" min="0" value="0" formControlName="seats" class="form-control" id="seats" placeholder="number of seats">
+                          </div>
+                    </div>
+                  </div><!--/.row-->
+                  <div class="row">
+
+                    <div class="form-group col-sm-4">
+                      <label for="postal-code">Manufactured Year *</label>
+                      <div class="input-group">
+
+                        <div class="input-group-prepend">
+                            <button class="fa fa-calendar" (click)="d.toggle()" type="button"></button>
+                        </div>
+                        <input formControlName="manufYear" class="form-control" placeholder="yyyy-mm-dd" name="dp" ngbDatepicker #d="ngbDatepicker">
+                      </div>
+                   </div>
+                   <div class="col-md-4">
+                      <label>Milage *</label>
+                      <div class="form-group">
+                          <input  formControlName="mileage" type="number" min="0" value="0" class="form-control" id="seats" placeholder="Mileage covered">
+                      </div>
                     </div>
                   </div>
+                  <!-- <div class="row">
 
-                </div>
-
-
+                      <div class="col-md-4">
+                        <label>Vehicle Image *</label>
+                        <div class="form-group">
+                            <input type="file" formControlName="vehicleImage" class="form-control-file" id="image">
+                        </div>
+                      </div>
+                      <div class="col-md-4">
+                        <label>Vehicle Document *</label>
+                        <div class="form-group">
+                            <input type="file" formControlName="vehicleDocument" class="form-control-file" id="document">
+                        </div>
+                      </div>
+                  </div>/.row -->
 
               </div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" (click)="largeModal.hide()">Close</button>
-          <button type="button" class="btn btn-primary">Save</button>
-        </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" (click)="largeModal.hide()">Close</button>
+                <button type="button" class="btn btn-primary" (click)="onSubmit()">Add Vehicle</button>
+              </div>
+
+        </form>
       </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
   </div><!-- /.modal -->

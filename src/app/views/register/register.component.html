@@ -34,6 +34,7 @@
                   <input type="email" [class.is-invalid] = "email.invalid && email.touched" formControlName="email" class="form-control" placeholder="Email">
                 </div>
 
+
                 <div class="form-group ">
                   <international-phone-number class="col-md-12" [required]="true" formControlName="mobileNumber" placeholder="Enter phone number" [maxlength]="20" [defaultCountry]="'ke'" [required]="true" [allowedCountries]="['ke','ug','tz']"></international-phone-number>
                 </div>

@@ -1,3 +1,4 @@
+import { CreatePasswordComponent } from './views/create-password/create-password.component';
 import { LandingpageComponent } from './landingpage/landingpage.component';
 import { RegisterCompanyComponent } from './views/register-company/register-company.component';
 import { NgModule } from '@angular/core';
@@ -29,7 +30,7 @@ export const routes: Routes = [
   {
     path: 'login',
     component: LoginComponent,
-    canActivate: [AuthGuard],
+    // canActivate: [AuthGuard],
     data: {
       title: 'Login Page'
     }
@@ -63,11 +64,18 @@ export const routes: Routes = [
     }
   },
   {
+    path: 'createPassword',
+    component: CreatePasswordComponent,
+    data: {
+      title: 'Create Password'
+    }
+  },
+  {
     path: '',
     component: DefaultLayoutComponent,
-     canActivate: [MainAuthGuard],
+    //  canActivate: [MainAuthGuard],
     // canActivateChild: [MainAuthGuard],
-     canLoad: [MainAuthGuard],
+    //  canLoad: [MainAuthGuard],
     data: {
       title: 'Home'
     },
@@ -81,29 +89,17 @@ export const routes: Routes = [
         loadChildren: () => import('./views/company/company.module').then(m => m.CompanyModule)
       },
       {
-        path: 'base',
-        loadChildren: () => import('./views/base/base.module').then(m => m.BaseModule)
+        path: 'drivers',
+        loadChildren: () => import('./views/drivers/drivers.module').then(m => m.DriversModule)
       },
       {
-        path: 'buttons',
-        loadChildren: () => import('./views/buttons/buttons.module').then(m => m.ButtonsModule)
+        path: 'vehicles',
+        loadChildren: () => import('./views/vehicles/vehicles.module').then(m => m.VehiclesModule)
       },
       {
         path: 'charts',
         loadChildren: () => import('./views/chartjs/chartjs.module').then(m => m.ChartJSModule)
       },
-      {
-        path: 'icons',
-        loadChildren: () => import('./views/icons/icons.module').then(m => m.IconsModule)
-      },
-      {
-        path: 'notifications',
-        loadChildren: () => import('./views/notifications/notifications.module').then(m => m.NotificationsModule)
-      },
-      {
-        path: 'widgets',
-        loadChildren: () => import('./views/widgets/widgets.module').then(m => m.WidgetsModule)
-      }
     ]
   },
   { path: '**', component: P404Component }

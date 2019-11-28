@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { CompanyService } from '../../services/company.service';
@@ -10,32 +11,37 @@ import { CompanyService } from '../../services/company.service';
 export class RegisterCompanyComponent implements OnInit {
   companyForm: FormGroup;
   public errMessage: string;
-  constructor(private fb: FormBuilder, private service: CompanyService) { }
+  constructor(private fb: FormBuilder, private service: CompanyService, private _router: Router) { }
 
-  get companyName() {
-    return this.companyForm.get('companyName');
+  get shortName() {
+    return this.companyForm.get('shortName');
   }
 
   get countryCode() {
     return this.companyForm.get('countryCode');
   }
 
-  get currencyCode() {
-    return this.companyForm.get('currencyCode');
+  get primaryEmail() {
+    return this.companyForm.get('primaryEmail');
+  }
+
+  get primaryMobileNo() {
+    return this.companyForm.get('primaryMobileNo');
   }
 
   ngOnInit() {
     this.companyForm = this.fb.group({
-      companyName: ['', [Validators.required]],
+      shortName: ['', [Validators.required]],
       countryCode: ['', [Validators.required]],
-      currencyCode: ['', [Validators.required]],
+      primaryEmail: ['', [Validators.required, Validators.email, ]],
+      primaryMobileNo: ['', [Validators.required]],
     });
   }
 
-  registerCompany(formData) {
-      this.service.registerCompany(formData).subscribe((res: any) => {
+  registerCompany() {
+      this.service.registerCompany(this.companyForm.value).subscribe((res: any) => {
         if (res) {
-          console.log(res);
+          this._router.navigateByUrl('/dashboard');
         }
       },
       (err: any) => {
@@ -44,5 +50,6 @@ export class RegisterCompanyComponent implements OnInit {
       }
     );
   }
+
 
 }

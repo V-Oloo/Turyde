@@ -1,0 +1,97 @@
+<div class="animated fadeIn">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-body">
+          <form [formGroup]="updateCompanyForm" (onSubmit)="onSubmit(updateCompanyForm.value)">
+            <!-- <div class="modal-header"> -->
+                <div class="card-header">
+                    <i class="fa fa-align-justify"></i> Company Profile
+                </div>
+            <!-- </div> -->
+            <div class="modal-body">
+
+            <div class="form-row">
+                  <div class="col mb-3">
+                    <input type="text" [ngClass]="{ 'is-invalid': submitted && f.shortname.errors }" formControlName="shortName" class="form-control" placeholder="Company Short Name">
+                    <div *ngIf="submitted && f.shortName.errors" class="invalid-feedback">
+                      <div *ngIf="f.shortName['errors']['required']">Short Name is required</div>
+                    </div>
+                  </div>
+
+                  <div class="col mb-3">
+                      <input type="text" formControlName="legalName" class="form-control" placeholder="Company Legal Name">
+                  </div>
+            </div>
+            <div class="form-row">
+                  <div class="col mb-3">
+                    <input type="text" [ngClass]="{ 'is-invalid': submitted && f.countryCode.errors }" formControlName="countryCode" class="form-control" placeholder="Country Code">
+                    <div *ngIf="submitted && f.countryCode.errors" class="invalid-feedback">
+                      <div *ngIf="f.countryCode['errors']['required']">Country code is required</div>
+                    </div>
+                  </div>
+
+                  <div class="col mb-3">
+                      <input type="text" formControlName="currencyCode" class="form-control" placeholder="Company Legal Name">
+                  </div>
+            </div>
+            <div class="form-row">
+                <div class="col mb-3">
+                    <input type="text" formControlName="govRegNo" class="form-control" placeholder="Government Registration Number">
+                </div>
+
+                <div class="col mb-3">
+                    <input type="text" formControlName="govTaxNo" class="form-control" placeholder="Government Tax Number">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col mb-3">
+                  <input type="text" [ngClass]="{ 'is-invalid': submitted && f.primaryEmail.errors }" formControlName="primaryEmail" class="form-control" placeholder="Primary Email">
+                  <div *ngIf="submitted && f.primaryEmail.errors" class="invalid-feedback">
+                    <div *ngIf="f.primaryEmail['errors']['required']">Primary Email is required</div>
+                  </div>
+                </div>
+
+               <div class="col mb-3">
+                  <input type="text" formControlName="primaryMobileNo" class="form-control" placeholder="Primary Mobile Number">
+                  <!-- <div *ngIf="submitted && f.primaryMobileNo.errors" class="invalid-feedback">
+                    <div *ngIf="f.primaryMobileNo['errors']['required']">Primary Mobile Number required</div>
+                  </div> -->
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col mb-3">
+                  <input type="text" formControlName="pEmailVerified" class="form-control" placeholder="Primary Email">
+                  <!-- <div *ngIf="submitted && f.pEmailVerified.errors" class="invalid-feedback">
+                    <div *ngIf="f.pEmailVerified['errors']['required']">Primary Email is required</div>
+                  </div> -->
+                </div>
+
+               <div class="col mb-3">
+                  <input type="text" [ngClass]="{ 'is-invalid': submitted && f.pMobileVerified.errors }" formControlName="pMobileVerified" class="form-control" placeholder="Primary Mobile Verified">
+                  <div *ngIf="submitted && f.pMobileVerified.errors" class="invalid-feedback">
+                    <div *ngIf="f.pMobileVerified['errors']['required']">Primary Mobile Number required</div>
+                  </div>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col md-6">
+                    <input type="text" [disabled] formControlName="status" class="form-control" value="Active">
+                </div>
+
+                <div class="col md-6">
+                    <input type="text" [disabled] formControlName="createdAt" class="form-control" >
+                </div>
+            </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary">Close</button>
+              <button type="button" class="btn btn-primary">Update Company</button>
+            </div>
+
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

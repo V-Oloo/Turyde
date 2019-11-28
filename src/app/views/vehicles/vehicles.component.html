@@ -1,0 +1,128 @@
+<div class="animated fadeIn">
+  <div class="row">
+      <div class="col-lg-12">
+        <div class="card">
+          <div class="card-header">
+
+            <div class="col-6 col-sm-4 col-md mb-3 mb-xl-0 ">
+                <i class="fa fa-align-justify"></i> Vehicles
+                <button type="button" class="btn btn-pill btn-success pull-right " data-toggle="modal" (click)="largeModal.show()"><i class="fa fa-plus"></i>&nbsp;Add Vehicle</button>
+            </div>
+
+          </div>
+          <div class="card-body">
+
+              <table datatable [dtOptions]="dtOptions"  class="table table-bordered row-border hove" style="width:100%">
+                  <thead class="text-center">
+                      <tr>
+                          <th>Name</th>
+                          <th>Position</th>
+                          <th>Office</th>
+                          <th>Age</th>
+                          <th>Start date</th>
+                          <th>Salary</th>
+                          <th>Action</th>
+                      </tr>
+                  </thead>
+                  <tbody>
+
+                      <tr class="text-center">
+                          <td>oloo</td>
+                          <td>SR</td>
+                          <td>Mine</td>
+                          <td>24</td>
+                          <td>1200</td>
+                          <td>1200</td>
+                          <td>
+                            <div class="btn-group mt-2" role="group">
+                                <button type="button" class="btn btn-success" [routerLink]="['/vehicles/vehicle-details']"><i class="fa fa-list"></i></button>
+                                <button type="button" class="btn btn-primary" [routerLink]="['/vehicles/update-vehicle']"><i class="fa fa-edit"></i></button>
+                                <button type="button" class="btn btn-danger"><i class="fa fa-trash"></i></button>
+                              </div>
+                          </td>
+                      </tr>
+
+                  </tbody>
+
+              </table>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+</div >
+
+<div bsModal #largeModal="bs-modal" [config]="{backdrop: 'static'}" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <form [formGroup]="addVehicleForm">
+          <!-- {{addVehicleForm.value | json}} -->
+          <div class="modal-header">
+              <h4 class="modal-title">Add Vehicle</h4>
+              <button type="button" class="close" (click)="largeModal.hide()" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+
+                <div class="row">
+                    <div class="col-md-4">
+                        <label>Reistration No. *</label>
+                        <div class="form-group">
+                            <input type="text" class="form-control" formControlName="regNo" id="city" placeholder="Vehicle Name">
+                        </div>
+                    </div>
+                    <div class="example-block col-md-4">
+                        <label>Vehicle Type *</label>
+                        <div class="form-group">
+                            <ngx-select
+                            formControlName="vehicleTypeId"
+                            [allowClear]="true"
+                            optionValueField="id" optionTextField="type"
+                            [items]="option"
+                            placeholder="No type selected">
+                           </ngx-select>
+
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <label>No. of Seats *</label>
+                        <div class="form-group">
+                            <input type="number" min="0" value="0" formControlName="seats" class="form-control" id="seats" placeholder="number of seats">
+                        </div>
+                  </div>
+                </div><!--/.row-->
+                <div class="row">
+
+                  <div class="form-group col-sm-4">
+                    <label for="postal-code">Manufactured Year *</label>
+                    <div class="input-group">
+
+                      <div class="input-group-prepend">
+                          <button class="fa fa-calendar" (click)="d.toggle()" type="button"></button>
+                      </div>
+                      <input formControlName="manufYear" class="form-control" placeholder="yyyy-mm-dd" name="dp" ngbDatepicker #d="ngbDatepicker">
+                    </div>
+                 </div>
+                 <div class="col-md-4">
+                    <label>Milage *</label>
+                    <div class="form-group">
+                        <input  formControlName="mileage" type="number" min="0" value="0" class="form-control" id="seats" placeholder="Mileage covered">
+                    </div>
+                  </div>
+                </div>
+
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" (click)="largeModal.hide()">Close</button>
+              <button type="button" class="btn btn-primary" (click)="onSubmit()">Add Vehicle</button>
+            </div>
+
+      </form>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+
+
