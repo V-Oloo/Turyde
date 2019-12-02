@@ -1,0 +1,252 @@
+<div class="container-fluid">
+    <div class="row">
+      <div class="col-md-3">
+
+        <!-- Profile Image -->
+        <div class="card card-primary card-outline">
+          <div class="card-body box-profile">
+            <div class="text-center">
+              <img class="profile-user-img img-fluid img-circle"
+
+                   src="../../../assets/img/user4-128x128.jpg"
+                   alt="User profile picture">
+            </div>
+
+            <h3 class="profile-username text-center">Victor Smith</h3>
+
+            <p class="text-muted text-center">Role: Driver</p>
+
+            <a href="#" class="btn btn-primary btn-block"><b>Make Driver</b></a>
+          </div>
+          <!-- /.card-body -->
+        </div>
+        <!-- /.card -->
+
+      </div>
+      <!-- /.col -->
+      <div class="col-md-9">
+          <div class="callout callout-info">
+              <div class="row">
+                  <div class="col-md-4">
+                      <p><label>Status</label>&nbsp;:&nbsp;&nbsp;<label>Active</label></p>
+                  </div>
+                  <div class="col-md-4">
+                      <p><label>Verhicle</label>&nbsp;:&nbsp;&nbsp;<label>KBJ 456Y</label></p>
+                  </div>
+
+              </div>
+
+            </div>
+            <table id="ticketDetailsTable" class="table table-no-margin" style="font-size:12px">
+                <tbody>
+                    <tr>
+                        <th>Name</th>
+                        <td><span style="font-weight:bold">Smith</span></td>
+                    </tr>
+                    <tr>
+                        <th>Email</th>
+                        <td><span style="font-weight:bold">Smith</span></td>
+
+                    </tr>
+                    <tr>
+                        <th>Phone Number</th>
+                        <td><span style="font-weight:bold">0706118959</span></td>
+
+                    </tr>
+                    <tr>
+                        <th>Role</th>
+                        <td><span style="font-weight:bold">Driver</span></td>
+
+                    </tr>
+
+                </tbody>
+            </table>
+      </div>
+
+    </div>
+    <!-- /.row -->
+    <div class="row">
+        <div class="col-md-12">
+            <!-- <div class="card"> -->
+                <tabset>
+                    <tab heading="Driver Documents Info">
+                        <div class="row">
+                            <div class="col-lg-12">
+                              <div class="card">
+                                <div class="card-header">
+                                  <i class="fa fa-align-justify"></i> Driver Documents
+                                  <button type="button" class="btn btn-pill btn-success pull-right " routerLink="/drivers/driver-docs-upload"><i class="fa fa-plus"></i>&nbsp;Add driver Document</button>
+                                </div>
+                                <div class="card-body">
+
+                                    <table datatable [dtOptions]="dtOptions"  class="table table-bordered row-border hove" style="width:100%">
+                                        <thead class="text-center">
+                                            <tr>
+                                                <th>Document Name</th>
+                                                <th>Date Of Issue</th>
+                                                <th>Expires On</th>
+                                                <th>File Type</th>
+                                                <th>Status</th>
+                                                <th>Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+
+                                            <tr class="text-center">
+                                                <td>Driving Linces</td>
+                                                <td>12/11/2019</td>
+                                                <td>12/31/2021</td>
+                                                <td>.PNG</td>
+                                                <td>Active</td>
+                                                <td>
+                                                  <div class="btn-group mt-2" role="group">
+                                                      <button type="button" class="btn btn-success" routerLink="/company/user-profile"><i class="fa fa-list"></i></button>
+                                                      <button type="button" class="btn btn-primary"><i class="fa fa-edit"></i></button>
+                                                      <button type="button" class="btn btn-danger"><i class="fa fa-trash"></i></button>
+                                                    </div>
+                                                </td>
+                                            </tr>
+
+                                        </tbody>
+
+                                    </table>
+
+                                </div>
+                              </div>
+                            </div>
+                        </div>
+                    </tab>
+                    <tab heading="Driver Vehicle History">
+                        <div class="row">
+                            <div class="col-lg-12">
+                              <div class="card">
+                                <div class="card-header">
+                                  <i class="fa fa-align-justify"></i> Driver Documents
+                                </div>
+                                <div class="card-body">
+
+                                    <table datatable [dtOptions]="dtOptions"  class="table table-bordered row-border hove" style="width:100%">
+                                        <thead class="text-center">
+                                            <tr>
+                                                <th>Document Name</th>
+                                                <th>Date Of Issue</th>
+                                                <th>Expires On</th>
+                                                <th>File Type</th>
+                                                <th>Status</th>
+                                                <th>Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+
+                                            <tr class="text-center">
+                                                <td>Driving Linces</td>
+                                                <td>12/11/2019</td>
+                                                <td>12/31/2021</td>
+                                                <td>.PNG</td>
+                                                <td>Active</td>
+                                                <td>
+                                                  <div class="btn-group mt-2" role="group">
+                                                      <button type="button" class="btn btn-success" routerLink="/company/user-profile"><i class="fa fa-list"></i></button>
+                                                      <button type="button" class="btn btn-primary"><i class="fa fa-edit"></i></button>
+                                                      <button type="button" class="btn btn-danger"><i class="fa fa-trash"></i></button>
+                                                    </div>
+                                                </td>
+                                            </tr>
+
+                                        </tbody>
+
+                                    </table>
+
+                                </div>
+                              </div>
+                            </div>
+                        </div>
+                    </tab>
+                    <tab heading="Driver Trip History">
+                        <div class="row">
+                            <div class="col-lg-12">
+                              <div class="card">
+                                <div class="card-header">
+                                  <i class="fa fa-align-justify"></i> Driver Documents
+                                </div>
+                                <div class="card-body">
+
+                                    <table datatable [dtOptions]="dtOptions"  class="table table-bordered row-border hove" style="width:100%">
+                                        <thead class="text-center">
+                                            <tr>
+                                                <th>Document Name</th>
+                                                <th>Date Of Issue</th>
+                                                <th>Expires On</th>
+                                                <th>File Type</th>
+                                                <th>Status</th>
+                                                <th>Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+
+                                            <tr class="text-center">
+                                                <td>Driving Linces</td>
+                                                <td>12/11/2019</td>
+                                                <td>12/31/2021</td>
+                                                <td>.PNG</td>
+                                                <td>Active</td>
+                                                <td>
+                                                  <div class="btn-group mt-2" role="group">
+                                                      <button type="button" class="btn btn-success" routerLink="/company/user-profile"><i class="fa fa-list"></i></button>
+                                                      <button type="button" class="btn btn-primary"><i class="fa fa-edit"></i></button>
+                                                      <button type="button" class="btn btn-danger"><i class="fa fa-trash"></i></button>
+                                                    </div>
+                                                </td>
+                                            </tr>
+
+                                        </tbody>
+
+                                    </table>
+
+                                </div>
+                              </div>
+                            </div>
+                        </div>
+                    </tab>
+
+                    <tab heading="Settings">
+                        <div class="callout callout-info">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <label><h3>Change Password</h3></label>
+                                </div>
+                            </div>
+                        </div>
+                        <form class="form-horizontal">
+                            <div class="form-group row">
+                              <label class="col-sm-3 col-form-label">Current Password</label>
+                              <div class="col-sm-8">
+                                <input type="password" class="form-control" placeholder="Current Password">
+                              </div>
+                            </div>
+                            <div class="form-group row">
+                              <label class="col-sm-3 col-form-label">New Password</label>
+                              <div class="col-sm-8">
+                                <input type="password" class="form-control" placeholder="New Password">
+                              </div>
+                            </div>
+                            <div class="form-group row">
+                              <label class="col-sm-3 col-form-label">Confirm Password</label>
+                              <div class="col-sm-8">
+                                <input type="password" class="form-control" placeholder="Confirm Password">
+                              </div>
+                            </div>
+                            <div class="form-group row">
+                              <div class="offset-sm-3 col-sm-10">
+                                <button type="submit" class="btn btn-success">Change Password</button>
+                              </div>
+                            </div>
+                          </form>
+                    </tab>
+                  </tabset>
+            <!-- </div> -->
+            <!-- /.nav-tabs-custom -->
+          </div>
+          <!-- /.col -->
+    </div>
+  </div><!-- /.container-fluid -->

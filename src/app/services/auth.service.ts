@@ -2,9 +2,10 @@ import { Globals } from './../global';
 import { SignUp } from './../_models/registration.model';
 import { Login } from './../_models/login.model';
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import {shareReplay, tap} from 'rxjs/operators';
+import { HttpClient } from '@angular/common/http';
+import {shareReplay, map} from 'rxjs/operators';
 import * as moment from 'moment';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 
 @Injectable({
@@ -14,7 +15,17 @@ export class AuthService {
 
   private readonly JWT_TOKEN = 'token';
 
-  constructor(private http: HttpClient, private global: Globals) { }
+  private currentUserSubject: BehaviorSubject<any>;
+  public currentUser: Observable<any>;
+
+  constructor(private http: HttpClient, private global: Globals) {
+    this.currentUserSubject = new BehaviorSubject<any>(JSON.parse(localStorage.getItem('currentUser')));
+    this.currentUser = this.currentUserSubject.asObservable();
+  }
+
+  public get currentUserValue(): any {
+      return this.currentUserSubject.value;
+  }
 
   isLoggedIn(): boolean {
     return !!this.getJwtToken();
@@ -29,9 +40,17 @@ export class AuthService {
  }
 
   loginUser(user: Login) {
-    return this.http.post<any>(this.global._BaseUri, user)
-           .pipe(
-            // tap(res => this.setSession ),
+    return this.http.post<any>(this.global._BaseUri + '/users/login', user)
+           .pipe(map(res => {
+              if (res && res.result.token) {
+                const expiresAt = moment().add(res.result.expires, 'second');
+                localStorage.setItem('JWT_TOKEN', res.result.token);
+                localStorage.setItem('expires_at', JSON.stringify(expiresAt.valueOf()) );
+                localStorage.setItem('currentUser', JSON.stringify(res.result.me.result));
+                this.currentUserSubject.next(res.result.me.result);
+              }
+              return res;
+            }),
              shareReplay(),
             );
   }
@@ -39,31 +58,12 @@ export class AuthService {
   logout() {
     localStorage.removeItem(this.JWT_TOKEN);
     localStorage.removeItem('expires_at');
+    localStorage.removeItem('currentUser');
   }
-
-  // private setSession(authResult: { expiresIn: moment.DurationInputArg1; token: string; }) {
-  //   const expiresAt = moment().add(authResult.expiresIn, 'second');
-
-  //   localStorage.setItem(this.JWT_TOKEN, authResult.token);
-  //   localStorage.setItem('expires_at', JSON.stringify(expiresAt.valueOf()) );
-  // }
-
-  // public isLoggedIn() {
-  //   return !!moment().isBefore(this.getExpiration());
-  // }
-
-  // isLoggedOut() {
-  //   return !this.isLoggedIn();
-  // }
-
-  // getExpiration() {
-  //   const expiration = localStorage.getItem('expires_at');
-  //   const expiresAt = JSON.parse(expiration);
-  //   return moment(expiresAt);
-  // }
 
   getJwtToken() {
     return localStorage.getItem('JWT_TOKEN');
   }
+
 
 }

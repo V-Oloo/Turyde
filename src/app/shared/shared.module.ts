@@ -6,6 +6,7 @@ import { NgbDatepickerModule } from '@ng-bootstrap/ng-bootstrap';
 import { TabsModule } from 'ngx-bootstrap/tabs';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { ButtonsModule } from 'ngx-bootstrap/buttons';
 import { AlertModule } from 'ngx-bootstrap/alert';
 import { NgxSelectModule } from 'ngx-select-ex';
@@ -20,6 +21,7 @@ import { NgxSelectModule } from 'ngx-select-ex';
     ReactiveFormsModule,
     DataTablesModule,
     NgbDatepickerModule,
+    BsDatepickerModule.forRoot(),
     TabsModule.forRoot(),
     ModalModule.forRoot(),
     ButtonsModule,
@@ -36,6 +38,7 @@ import { NgxSelectModule } from 'ngx-select-ex';
     NgbDatepickerModule,
     TabsModule,
     ModalModule,
+    BsDatepickerModule,
     NgxSelectModule,
     ButtonsModule,
     BsDropdownModule,

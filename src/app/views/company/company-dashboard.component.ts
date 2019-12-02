@@ -1,13 +1,14 @@
-import { AuthService } from './../../services/auth.service';
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { ModalDirective } from 'ngx-bootstrap/modal';
+import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../../services/auth.service';
 import { CompanyService } from '../../services/company.service';
 
 @Component({
-  templateUrl: 'dashboard.component.html'
+  selector: 'app-company-dashboard',
+  templateUrl: './company-dashboard.component.html',
+  styles: []
 })
-export class DashboardComponent implements OnInit {
-  @ViewChild('myModal') public myModal: ModalDirective;
+export class CompanyDashboardComponent implements OnInit {
+
   dtOptions: DataTables.Settings = {};
   company: {};
 
@@ -28,6 +29,4 @@ export class DashboardComponent implements OnInit {
     this._companyService.getCompany(this.companyId).subscribe(data => this.company = data);
   }
 
-
 }
-

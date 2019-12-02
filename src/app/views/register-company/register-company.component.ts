@@ -11,6 +11,7 @@ import { CompanyService } from '../../services/company.service';
 export class RegisterCompanyComponent implements OnInit {
   companyForm: FormGroup;
   public errMessage: string;
+  public companyId;
   constructor(private fb: FormBuilder, private service: CompanyService, private _router: Router) { }
 
   get shortName() {
@@ -41,6 +42,7 @@ export class RegisterCompanyComponent implements OnInit {
   registerCompany() {
       this.service.registerCompany(this.companyForm.value).subscribe((res: any) => {
         if (res) {
+          // localStorage.setItem('CompanyId', res.result.id);
           this._router.navigateByUrl('/dashboard');
         }
       },

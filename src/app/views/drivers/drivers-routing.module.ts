@@ -1,6 +1,9 @@
+import { UploadDriverDocComponent } from './upload-driver-doc.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { DriversComponent } from './drivers.component';
+import { AddDriverComponent } from './add-driver.component';
+
 
 
 const routes: Routes = [
@@ -19,6 +22,20 @@ const routes: Routes = [
         component: DriversComponent,
         data: {
           title: 'drivers'
+        }
+      },
+      {
+        path: 'add-driver',
+        component: AddDriverComponent,
+        data: {
+          title: 'Add Driver'
+        }
+      },
+      {
+        path: 'driver-docs-upload',
+        component: UploadDriverDocComponent,
+        data: {
+          title: 'Add Driver Document'
         }
       },
     ]

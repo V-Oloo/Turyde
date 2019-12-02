@@ -1,6 +1,7 @@
+import { RoutesComponent } from './routes.component';
+import { CompanyDashboardComponent } from './company-dashboard.component';
+import { UserProfileComponent } from './user-profile.component';
 import { UpdateCompanyComponent } from './update-company.component';
-import { VehiclesComponent } from './vehicles.component';
-import { DriversComponent } from './drivers.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
@@ -14,7 +15,14 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        redirectTo: 'drivers'
+        redirectTo: 'home'
+      },
+      {
+        path: 'home',
+        component: CompanyDashboardComponent,
+        data: {
+          title: 'Dashboard'
+        }
       },
       {
         path: 'update-company',
@@ -24,17 +32,17 @@ const routes: Routes = [
         }
       },
       {
-        path: 'vehicles',
-        component: VehiclesComponent,
+        path: 'user-profile',
+        component: UserProfileComponent,
         data: {
-          title: 'vehicles'
+          title: 'User Profile'
         }
       },
       {
-        path: 'drivers',
-        component: DriversComponent,
+        path: 'routes',
+        component: RoutesComponent,
         data: {
-          title: 'drivers'
+          title: 'Routes'
         }
       },
     ]

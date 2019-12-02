@@ -9,38 +9,22 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
   public loginForm: Login = {
-    username: '',
-    password: ''
+    email: '',
+    password: '',
+    channel: 'Admin_APP',
   };
 
-  public errMessage;
-
-  dismissible = true;
-  alerts: any = [
-    {
-      type: 'success',
-      msg: `You successfully read this important alert message.`
-    },
-    {
-      type: 'info',
-      msg: `This alert needs your attention, but it's not super important.`
-    },
-    {
-      type: 'danger',
-      msg: `Better check yourself, you're not looking too good.`
-    }
-  ];
-
+  public errMessage: string;
 
   constructor(private _service: AuthService, private _router: Router) { }
 
     ngOnInit() {}
 
     loginUser() {
+      console.log(this.loginForm);
       this._service.loginUser(this.loginForm).subscribe(
         (res: any) => {
           if (res) {
-            localStorage.setItem('JWT_TOKEN', res.accessToken);
             this._router.navigateByUrl('/dashboard');
           }
 
@@ -51,4 +35,5 @@ export class LoginComponent implements OnInit {
         }
       );
     }
+
  }

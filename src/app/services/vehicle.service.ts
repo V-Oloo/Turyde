@@ -1,48 +1,13 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { of } from 'rxjs';
 import { Vehicle } from '../_models/vehicle.model';
 import { Globals } from './../global';
+import { map, shareReplay } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class VehicleService {
-  options: Array<object> = [
-    {
-      id : 1,
-      type: 'range'
-    },
-    {
-      id : 2,
-      type: 'bus'
-    },
-    {
-      id : 4,
-      type: 'mini-bus'
-    },
-    {
-      id : 5,
-      type: 'matatu'
-    },
-    {
-      id : 6,
-      type: 'potche'
-    },
-    {
-      id : 7,
-      type: 'ma3'
-    },
-    {
-      id : 8,
-      type: 'nduthi'
-    },
-    {
-      id : 9,
-      type: 'basy'
-    },
-
-  ];
 
 
 
@@ -51,7 +16,15 @@ export class VehicleService {
 
 
   vehicleType() {
-    return of(this.options);
+    return this.http.get(this.global._BaseUri + '/vehicles/types').pipe(map((data: any) => data.result ), shareReplay(), );
+  }
+
+  getVehicles(id: Number) {
+    return this.http.get(this.global._BaseUri + '/vehicles/list/' + id).pipe(map((data: any) => data.result.data));
+  }
+
+  getVehicle(vehicleId: number) {
+    return this.http.get<Vehicle>(this.global._BaseUri + '/vehicles/' + vehicleId).pipe(map((data: any) => data.result),  shareReplay(), );
   }
 
   createVehicle(data: Vehicle) {

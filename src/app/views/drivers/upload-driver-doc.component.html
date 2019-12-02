@@ -1,0 +1,64 @@
+<div class="animated fadeIn">
+    <div class="row">
+      <div class="container">
+          <div class="col-md-12">
+              <div class="card">
+                <div class="card-body">
+                    <form [formGroup]="uploadUserDocs">
+                        <div class="card-header">
+                            <i class="fa fa-align-justify"></i> Add Driver
+                        </div>
+                        <div class="modal-body">
+                          <div class="row">
+                              <div class="col-md-6">
+                                  <label>Document Type. *</label>
+                                  <div class="form-group">
+                                      <input type="text" class="form-control" formControlName="DocTypeName" placeholder="Document Type">
+                                  </div>
+                              </div>
+                              <div class="col-md-6">
+                                  <label for="postal-code">Date Of Issue</label>
+                                  <div class="input-group">
+
+                                    <div class="input-group-prepend">
+                                        <button class="fa fa-calendar" type="button"></button>
+                                    </div>
+                                    <input class="form-control" formControlName="DateIssued" placeholder="yyyy-mm-dd" bsDatepicker>
+                                  </div>
+                               </div>
+                          </div>
+                         <div class="row">
+                             <div class="col-md-6">
+                                <label for="postal-code">Expires On</label>
+                                <div class="input-group">
+
+                                  <div class="input-group-prepend">
+                                      <button class="fa fa-calendar" type="button"></button>
+                                  </div>
+                                  <input type="text" class="form-control" formControlName="ExpiresOn" placeholder="yyyy-mm-dd" bsDatepicker>
+                                </div>
+                             </div>
+                             <div class="example-block col-md-6">
+                                <label>Image/Document *</label>
+                                <div class="custom-file form-group">
+                                    <input type="file" formControlName="image" class="custom-file-input" id="customFile">
+                                    <label class="custom-file-label" for="customFile">Choose file</label>
+                                </div>
+                            </div>
+                         </div>
+
+
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary">Close</button>
+                          <button type="button" class="btn btn-primary" (click)="onSubmit()">Upload</button>
+                        </div>
+
+                  </form>
+                </div>
+              </div>
+            </div>
+      </div>
+
+    </div>
+  </div>

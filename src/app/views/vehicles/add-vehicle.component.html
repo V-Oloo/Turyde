@@ -1,0 +1,68 @@
+<div class="animated fadeIn">
+  <div class="row">
+    <div class="container">
+        <div class="col-md-12">
+            <div class="card">
+              <div class="card-body">
+                <form [formGroup]="addVehicleForm">
+
+                  <div class="modal-body">
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label>Reistration No. *</label>
+                            <div class="form-group">
+                                <input type="text" class="form-control" formControlName="regNo" id="city" placeholder="Vehicle Name">
+                            </div>
+                        </div>
+                        <div class="example-block col-md-6">
+                            <label>Vehicle Type *</label>
+                            <div class="form-group">
+                                <ngx-select
+                                formControlName="vehicleTypeId"
+                                [allowClear]="true"
+                                optionValueField="id" optionTextField="name"
+                                [items]="option"
+                                placeholder="No type selected">
+                               </ngx-select>
+
+                            </div>
+                        </div>
+                    </div><!--/.row-->
+                    <div class="row">
+                      <div class="col-md-6">
+                        <label>No. of Seats *</label>
+                        <div class="form-group">
+                            <input type="number" min="0" value="option.seats" formControlName="seats" class="form-control" id="seats" placeholder="number of seats">
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <label>Manufactured Year *</label>
+                        <div class="form-group">
+                            <input type="text" formControlName="manufYear" class="form-control" id="seats" placeholder="Year of manufacture">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                     <div class="col-md-6">
+                        <label>Milage *</label>
+                        <div class="form-group">
+                            <input  formControlName="mileage" type="number" min="0" value="0" class="form-control" id="seats" placeholder="Mileage covered">
+                        </div>
+                      </div>
+                    </div>
+
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary">Close</button>
+                    <button type="submit" class="btn btn-primary" (click)="onSubmit()">Add Vehicle</button>
+                  </div>
+
+                </form>
+              </div>
+            </div>
+          </div>
+    </div>
+
+  </div>
+</div>

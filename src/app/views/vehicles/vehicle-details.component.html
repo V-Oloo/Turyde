@@ -4,7 +4,7 @@
           <a class="btn btn-primary btn-sm btn-flat" [routerLink]="['/vehicles/update-vehicle']" ><i class="fa fa-pencil"></i>
               EDIT VEHICLE</a>
 
-          <a class="btn btn-info btn-sm btn-flat" data-toggle="modal" (click)="myModal.show()"><i class="fa fa-plus-circle"></i>
+          <a class="btn btn-info btn-sm btn-flat"><i class="fa fa-plus-circle"></i>
               ASSIGN DRIVER</a>
 
       </p>
@@ -20,41 +20,13 @@
                 <table id="ticketDetailsTable" class="table table-no-margin" style="font-size:12px">
                     <tbody>
                         <tr>
-                            <td><b>Registration No #</b></td>
-                            <td><span style="font-weight:bold"></span></td>
+                            <th>Registration Number</th>
                         </tr>
-                        <tr>
-                            <td><b>Vehicle Type</b></td>
-                            <td><span style="font-weight:bold"></span></td>
-                        </tr>
-                        <tr>
-                            <td><b>Vehicle Status</b></td>
-                            <td><span class="badge bg-yellow"></span>
-                            </td>
+                        <tr  *ngFor="let item of vehicle">
+                            <td><span style="font-weight:bold">{{item.RegNo}}</span></td>
+
                         </tr>
 
-                        <tr>
-                            <td><b>Vehicle Driver</b></td>
-                            <td><span style="font-weight:bold">Unassigned</span></td>
-                        </tr>
-                        <tr>
-                            <td><b>Number of Seats</b></td>
-                            <td><span style="font-weight:bold"></span></td>
-                        </tr>
-                        <tr>
-                            <td><b>Vehicle Mileage</b></td>
-                            <td><span style="font-weight:bold"></span></td>
-                        </tr>
-                        <tr>
-                            <td><b>Vehicle Document</b></td>
-                            <td> <a href="">
-                                    <i class="fa fa-fw fa-download"></i> DOWNLOAD</a></td>
-                        </tr>
-
-                        <!-- <tr>
-                            <td><b>Created At</b></td>
-                            <td><span style="font-weight:bold"></span></td>
-                        </tr> -->
                     </tbody>
                 </table>
             </div>
@@ -75,40 +47,4 @@
       </div><!--/.row-->
 </div>
 
-<!-- // Assign driver Modal starts here -->
-<div bsModal #myModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h4 class="modal-title">Assign Driver</h4>
-          <button type="button" class="close" (click)="myModal.hide()" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-           <form action="">
-              <div class="example-block col-md-12">
-                  <label>Driver *</label>
-                  <div class="form-group">
-                      <ngx-select
-                      formControlName="vehicleTypeId"
-                      [allowClear]="true"
-                      optionValueField="id" optionTextField="type"
-                      [items]="option"
-                      placeholder="No driver selected">
-                     </ngx-select>
-
-                  </div>
-              </div>
-           </form>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" (click)="myModal.hide()">Close</button>
-          <button type="button" class="btn btn-primary">Assign</button>
-        </div>
-      </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
-  </div><!-- /.modal -->
-
-  <!-- // Assign driver Modal ends here -->
 

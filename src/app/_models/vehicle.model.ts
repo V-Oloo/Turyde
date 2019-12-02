@@ -1,4 +1,7 @@
 export class Vehicle {
+
+  vehicle: [
+   {
   regNo: 'string';
   companyId: number;
   vehicleTypeId: number;
@@ -8,4 +11,6 @@ export class Vehicle {
   userId: 'string';
   id: number;
   status: 'string';
+   }
+  ];
 }

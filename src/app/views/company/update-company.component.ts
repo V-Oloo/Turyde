@@ -1,5 +1,6 @@
+import { AuthService } from './../../services/auth.service';
 import { Router } from '@angular/router';
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { CompanyService } from '../../services/company.service';
 
@@ -14,12 +15,16 @@ export class UpdateCompanyComponent implements OnInit {
   submitted = false;
   errMessage: string;
   status = 'Active';
+  company: any = [];
 
-  constructor(private service: CompanyService, private fb: FormBuilder, private _router: Router) { }
+  currentUser = this.auth.currentUserValue;
+  companyId: number = this.currentUser.companyId;
+
+  constructor(private service: CompanyService, private fb: FormBuilder, private _router: Router, private auth: AuthService) { }
 
   ngOnInit() {
     this.updateCompanyForm = this.fb.group({
-      shortName: ['', ],
+      shortName: ['', [Validators.required] ],
       countryCode: ['', ],
       currencyCode: ['', ],
       legalName: ['', ],
@@ -29,17 +34,40 @@ export class UpdateCompanyComponent implements OnInit {
       primaryMobileNo: ['', ],
       pEmailVerified: ['', ],
       pMobileVerified: ['', ],
-      status: [this.status, ],
-      createdAt: ['2019-11-28T07:36:47.120Z', ]
+      status: [{ value: '', disabled: true }, ],
+      createdAt: [{ value: '', disabled: true }, ]
     });
+    this.getCompanyDetails();
   }
    // convenience getter for easy access to form fields
    get f() { return this.updateCompanyForm.controls; }
 
    onSubmit(data) {
-      this.service.updateCompany(data)
+     this.submitted = true;
+     this.service.updateCompany(data)
         .subscribe();
 
+   }
+
+   getCompanyDetails() {
+     this.service.getCompany(this.companyId).subscribe(data => this.editCompany(data));
+   }
+
+   editCompany(data) {
+     this.updateCompanyForm.patchValue({
+      shortName: data.shortName,
+      countryCode: data.countryCode,
+      currencyCode: data.currencyCode,
+      legalName: data.legalName,
+      govRegNo: data.govRegNo,
+      govTaxNo: data.govTaxNo,
+      primaryEmail: data.primaryEmail,
+      primaryMobileNo: data.primaryMobileNo,
+      pEmailVerified: data.pEmailVerified,
+      pMobileVerified: data.pMobileVerified,
+      status: data.status,
+      createdAt: data.createdAt,
+     });
    }
 
 }

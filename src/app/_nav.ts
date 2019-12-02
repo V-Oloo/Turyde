@@ -12,16 +12,16 @@ export const navItems: INavData[] = [
     url: '/company',
     icon: 'icon-puzzle',
     children: [
-      // {
-      //   name: 'Vehicles',
-      //   url: '/company/vehicles',
-      //   icon: 'icon-speedometer'
-      // },
-      // {
-      //   name: 'Drivers',
-      //   url: '/company/drivers',
-      //   icon: 'icon-puzzle',
-      // },
+      {
+        name: 'Dashboard',
+        url: '/company/home',
+        icon: 'icon-speedometer'
+      },
+      {
+        name: 'Routes',
+        url: '/company/routes',
+        icon: 'icon-puzzle',
+      },
     ]
   },
   {

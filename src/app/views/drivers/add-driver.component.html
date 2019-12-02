@@ -1,0 +1,50 @@
+<div class="animated fadeIn">
+    <div class="row">
+      <div class="container">
+          <div class="col-md-6">
+              <div class="card">
+                <div class="card-body">
+                    <form [formGroup]="createUser">
+                        <div class="card-header">
+                            <i class="fa fa-align-justify"></i> Add Driver
+                        </div>
+                        <div class="modal-body">
+                          <div class="row">
+                              <div class="col-md-6">
+                                  <label>First Name. *</label>
+                                  <div class="form-group">
+                                      <input type="text" class="form-control" formControlName="firstName" id="city" placeholder="Vehicle Name">
+                                  </div>
+                              </div>
+                              <div class="col-md-6">
+                                  <label>Last Name. *</label>
+                                  <div class="form-group">
+                                      <input type="text" class="form-control" formControlName="lastName" id="city" placeholder="Vehicle Name">
+                                  </div>
+                              </div>
+                          </div>
+                         <div class="row">
+                            <div class="col-md-12">
+                                <label>Email *</label>
+                                <div class="form-group">
+                                    <input type="email" formControlName="email" formControlName="email" class="form-control" placeholder="Email">
+                                </div>
+                            </div>
+                         </div>
+                         <div class="form-group ">
+                            <international-phone-number class="col-md-12" [required]="true" formControlName="phoneNumber" placeholder="Enter phone number" [maxlength]="20" [defaultCountry]="'ke'" [required]="true" [allowedCountries]="['ke','ug','tz']"></international-phone-number>
+                          </div>
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary">Close</button>
+                          <button type="button" class="btn btn-primary" (click)="onSubmit()">Add Driver</button>
+                        </div>
+
+                  </form>
+                </div>
+              </div>
+            </div>
+      </div>
+
+    </div>
+  </div>

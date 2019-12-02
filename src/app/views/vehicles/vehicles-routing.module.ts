@@ -1,3 +1,4 @@
+import { AddVehicleComponent } from './add-vehicle.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { VehiclesComponent } from './vehicles.component';
@@ -24,10 +25,17 @@ const routes: Routes = [
         }
       },
       {
-        path: 'vehicle-details',
+        path: 'add-vehicle',
+        component: AddVehicleComponent,
+        data: {
+          title: 'Add vehicle'
+        }
+      },
+      {
+        path: 'vehicle-details/:id',
         component: VehicleDetailsComponent,
         data: {
-          title: 'vehicles Details'
+          title: 'vehicle Details'
         }
       },
       {

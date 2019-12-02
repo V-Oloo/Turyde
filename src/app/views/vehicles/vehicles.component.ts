@@ -1,8 +1,7 @@
 import { VehicleService } from './../../services/vehicle.service';
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { ModalDirective } from 'ngx-bootstrap/modal';
-import { Validators, FormBuilder, FormGroup } from '@angular/forms';
-import { Vehicle } from '../../_models/vehicle.model';
+import { Component, OnInit, ViewChild, OnDestroy } from '@angular/core';
+import { AuthService } from '../../services/auth.service';
+import { Subject } from 'rxjs';
 
 
 @Component({
@@ -10,63 +9,36 @@ import { Vehicle } from '../../_models/vehicle.model';
   templateUrl: './vehicles.component.html',
   styleUrls: ['./vehicles.component.css']
 })
-export class VehiclesComponent implements OnInit {
+export class VehiclesComponent implements OnInit, OnDestroy {
 
-  addVehicleForm: FormGroup;
-
-  @ViewChild('largeModal') public largeModal: ModalDirective;
   dtOptions: DataTables.Settings = {};
-  public exampleData: Array<object>;
-  public option: Array<object>;
-  // public options: Options;
 
-  config = {
-    displayKey: 'type', // if objects array passed which key to be displayed defaults to description
-    bindKey: 'id',
-    search: true,
-    placeholder: 'Select Vehicle Type',
-  };
+  currentUser = this.auth.currentUserValue;
+  companyId: number = this.currentUser.companyId;
 
+  vehicles: [];
 
-  constructor(private fb: FormBuilder, private _service: VehicleService) {}
+   dtTrigger: Subject<any> = new Subject();
+
+  constructor(private _service: VehicleService, private auth: AuthService) {}
 
   ngOnInit(): void {
-    // vehicle form starts here
-    this.addVehicleForm = this.fb.group ({
-      regNo: ['', [Validators.required]],
-      vehicleTypeId: ['', [Validators.required]],
-      companyId: [''],
-      seats: ['', [Validators.required]],
-      manufYear: ['', [Validators.required]],
-      mileage: ['', [Validators.required]],
-      userId: ['', [Validators.required]],
-      id: ['', [Validators.required]],
-      status: ['', [Validators.required]],
-    });
 
     // angular datatable configuration
     this.dtOptions = {
-      pagingType: 'full_numbers'
+      pagingType: 'full_numbers',
+      pageLength: 10
     };
 
-    // get vehicle type array object
-    this._service.vehicleType().subscribe(res => {
-      this.option = res;
+    this._service.getVehicles(this.companyId).subscribe(vehicles => {
+      this.vehicles = vehicles;
+      this.dtTrigger.next();
     });
-
   }
 
-  onSubmit(form: Vehicle) {
-   // if (this.addVehicleForm.valid) {
-      this._service.createVehicle(form).subscribe((res: any) => {
-        if (res) {
-          console.log(res);
-        }
-      },
-      (err: any) => {console.log(err); }
-    );
-
-    // }
+  ngOnDestroy(): void {
+    // Do not forget to unsubscribe the event
+    this.dtTrigger.unsubscribe();
   }
 
 }

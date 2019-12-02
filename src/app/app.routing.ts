@@ -30,7 +30,7 @@ export const routes: Routes = [
   {
     path: 'login',
     component: LoginComponent,
-    // canActivate: [AuthGuard],
+    canActivate: [AuthGuard],
     data: {
       title: 'Login Page'
     }
@@ -73,9 +73,9 @@ export const routes: Routes = [
   {
     path: '',
     component: DefaultLayoutComponent,
-    //  canActivate: [MainAuthGuard],
+    canActivate: [MainAuthGuard],
     // canActivateChild: [MainAuthGuard],
-    //  canLoad: [MainAuthGuard],
+    canLoad: [MainAuthGuard],
     data: {
       title: 'Home'
     },

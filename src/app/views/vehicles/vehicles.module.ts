@@ -5,10 +5,11 @@ import { VehiclesRoutingModule } from './vehicles-routing.module';
 import { VehiclesComponent } from './vehicles.component';
 import { VehicleDetailsComponent } from './vehicle-details.component';
 import { UpdateVehicleComponent } from './update-vehicle.component';
+import { AddVehicleComponent } from './add-vehicle.component';
 
 
 @NgModule({
-  declarations: [VehiclesComponent, VehicleDetailsComponent, UpdateVehicleComponent],
+  declarations: [VehiclesComponent, VehicleDetailsComponent, UpdateVehicleComponent, AddVehicleComponent],
   imports: [
     SharedModule,
     VehiclesRoutingModule
