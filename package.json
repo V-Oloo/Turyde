@@ -1,22 +1,6 @@
 {
-  "name": "@coreui/coreui-free-angular-admin-template",
-  "version": "2.7.0",
-  "description": "CoreUI Free Angular 2+ Admin Template",
-  "author": {
-    "name": "Łukasz Holeczek",
-    "url": "http://holeczek.pl",
-    "github": "https://github.com/mrholek",
-    "twitter": "https://twitter.com/lukaszholeczek"
-  },
-  "contributors": [
-    {
-      "name": "Andrzej Kopański",
-      "url": "https://github.com/xidedix"
-    }
-  ],
-  "homepage": "https://coreui.io/angular",
-  "copyright": "Copyright 2019 creativeLabs Łukasz Holeczek",
-  "license": "MIT",
+  "name": "@TURYDE",
+  "version": "0.0.0",
   "scripts": {
     "ng": "ng",
     "postinstall": "ngcc --properties es2015 browser module main --first-only --create-ivy-entry-points",
@@ -62,6 +46,7 @@
     "ngx-international-phone-number": "^1.0.4",
     "ngx-perfect-scrollbar": "^8.0.0",
     "ngx-select-ex": "^3.7.3",
+    "ngx-spinner": "^8.0.3",
     "ngx-toastr": "^11.2.1",
     "rxjs": "^6.5.3",
     "simple-line-icons": "^2.4.1",
