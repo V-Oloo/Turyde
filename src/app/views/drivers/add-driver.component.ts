@@ -2,6 +2,7 @@ import { DriverService } from './../../services/driver.service';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-driver',
@@ -11,7 +12,12 @@ import { ToastrService } from 'ngx-toastr';
 export class AddDriverComponent implements OnInit {
 
   createUser: FormGroup;
-  constructor(private fb: FormBuilder, private _service: DriverService, private toastr: ToastrService) { }
+  constructor(
+    private fb: FormBuilder,
+    private _service: DriverService,
+    private toastr: ToastrService,
+    private router: Router,
+    ) { }
 
   ngOnInit() {
     // vehicle form starts here
@@ -26,14 +32,15 @@ export class AddDriverComponent implements OnInit {
   }
 
   onSubmit() {
-     // this._service.addDriver(this.createUser.value).subscribe(res => {
-               // console.log(res);
+     this._service.addDriver(this.createUser.value).subscribe(res => {
+                // console.log(res);
                 this.createUser.reset();
-                this.toastr.success('User added successfully!', 'User Added');
-              // },
-              // err => {
-               //  console.log(err);
-               // });
+                this.toastr.success('Driver added successfully!', 'Driver Added');
+                this.router.navigate(['/drivers/drivers']);
+              },
+              err => {
+                console.log(err);
+               });
   }
 
 }

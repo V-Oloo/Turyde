@@ -1,50 +1,86 @@
 <div class="animated fadeIn">
-    <h1><strong>KBW 12R</strong>
-      <p class="pull-right">
-          <a class="btn btn-primary btn-sm btn-flat" [routerLink]="['/vehicles/update-vehicle']" ><i class="fa fa-pencil"></i>
-              EDIT VEHICLE</a>
+    <div class="row" >
+        <div class="col-md-3">
 
-          <a class="btn btn-info btn-sm btn-flat"><i class="fa fa-plus-circle"></i>
-              ASSIGN DRIVER</a>
+          <!-- Profile Image -->
+          <div class="card card-primary card-outline">
+            <div class="card-body box-profile">
+              <div class="text-center">
+                <img src="http://placehold.it/380x500"  class="img-fluid" alt="" style="max-height: 280px;" />
+              </div>
 
-      </p>
-    </h1>
-    <div class="row">
-        <div class="col-sm-8">
-          <div class="card">
-            <div class="card-header">
-              <strong>Vehicle</strong>
-              <small>Details</small>
+              <h3 class="profile-username text-center"></h3>
+
+              <p class="text-muted text-center"></p>
+
+              <a class="btn btn-info btn-block btn-flat"><b><i class="fa fa-plus-circle"></i>ASSIGN DRIVER</b></a>
+
             </div>
-            <div class="card-body">
-                <table id="ticketDetailsTable" class="table table-no-margin" style="font-size:12px">
-                    <tbody>
-                        <tr>
-                            <th>Registration Number</th>
-                        </tr>
-                        <tr  *ngFor="let item of vehicle">
-                            <td><span style="font-weight:bold">{{item.RegNo}}</span></td>
-
-                        </tr>
-
-                    </tbody>
-                </table>
-            </div>
+            <!-- /.card-body -->
           </div>
-        </div><!--/.col-->
-        <div class="col-sm-4">
-          <div class="card">
-            <div class="card-header">
-                <strong>Vehicle Image</strong>
-            </div>
-            <div class="card-body">
-                <div class="col-sm-4">
-                    <img src="http://placehold.it/380x500" style="height: 300px; width: 300px;" alt="" class="img-rounded img-responsive" />
+          <!-- /.card -->
+
+        </div>
+        <!-- /.col -->
+        <div class="col-md-9">
+            <div class="card">
+                <div class="card-header">
+                    <strong>Vehicle</strong>
+                    <small>Details</small>
+                    <div class="pull-right">
+                        <a class="btn btn-primary btn-sm btn-flat" routerLink="/vehicles/update-vehicle/{{vehicleId}}" ><i class="fa fa-pencil"></i>
+                          EDIT VEHICLE</a>&nbsp;&nbsp;
+                        <a class="btn btn-primary btn-sm btn-flat" [routerLink]="['/vehicles/update-vehicle']" ><i class="fa fa-pencil"></i>
+                          ADD VEHICLE DOCUMENTS</a>
+                    </div>
+
+                  </div>
+                <div class="callout callout-info">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <p><label><span style="font-weight:bold">Status</span></label>&nbsp;:&nbsp;&nbsp;<label><span style="font-weight:bold">Active</span></label></p>
+                        </div>
+                        <div class="col-md-4">
+                            <p><label><span style="font-weight:bold">Verhicle</span></label>&nbsp;:&nbsp;&nbsp;<label><span style="font-weight:bold">{{reg}}</span></label></p>
+                        </div>
+
+                    </div>
+
+                  </div>
+                  <div class="card-body">
+                      <table id="ticketDetailsTable" class="table table-no-margin" style="font-size:12px">
+                          <tbody>
+
+                              <tr>
+                                  <th>Number Of Seats</th>
+                                  <td><span style="font-weight:bold">{{seats}}</span></td>
+
+                              </tr>
+                              <tr>
+                                  <th>Mileage</th>
+                                  <td><span style="font-weight:bold">{{mileage}}</span></td>
+
+                              </tr>
+                              <tr>
+                                  <th>Year Of Manufacture</th>
+                                  <td><span style="font-weight:bold">{{manfYear}}</span></td>
+
+                              </tr>
+                              <tr>
+                                  <th>Date Created</th>
+                                  <td><span style="font-weight:bold">{{created}}</span></td>
+
+                              </tr>
+
+                          </tbody>
+                      </table>
                 </div>
             </div>
-          </div>
-        </div><!--/.col-->
-      </div><!--/.row-->
+
+        </div>
+
+      </div>
+      <!-- /.row -->
 </div>
 
 

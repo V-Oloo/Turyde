@@ -12,7 +12,7 @@
           </div>
           <div class="card-body">
 
-              <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="table table-bordered row-border hove" style="width:100%">
+              <table datatable [dtOptions]="dtOptions" class="table table-bordered row-border hove" style="width:100%">
                   <thead class="text-center">
                       <tr>
                           <th>Registration Number</th>
@@ -32,7 +32,7 @@
                           <td>
                             <div class="btn-group mt-2" role="group">
                                 <button type="button" class="btn btn-success" routerLink="/vehicles/vehicle-details/{{item.id}}"><i class="fa fa-list"></i></button>
-                                <button type="button" class="btn btn-primary" [routerLink]="['/vehicles/update-vehicle']"><i class="fa fa-edit"></i></button>
+                                <button type="button" class="btn btn-primary" routerLink="/vehicles/update-vehicle/{{item.id}}"><i class="fa fa-edit"></i></button>
                                 <button type="button" class="btn btn-danger"><i class="fa fa-trash"></i></button>
                               </div>
                           </td>

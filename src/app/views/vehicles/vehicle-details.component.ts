@@ -1,7 +1,5 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { VehicleService } from '../../services/vehicle.service';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { map } from 'rxjs/operators';
 import { Vehicle } from '../../_models/vehicle.model';
 
 @Component({
@@ -13,23 +11,24 @@ import { Vehicle } from '../../_models/vehicle.model';
 })
 export class VehicleDetailsComponent implements OnInit {
 
-  public option: Array<object>;
+  vehicleObj: any;
+  reg; mileage; status; seats; created; manfYear; vehicleId;
 
-  vehicle: any;
+  constructor(private route: ActivatedRoute) { }
 
-  constructor( private _service: VehicleService, private route: ActivatedRoute) { }
+
 
   ngOnInit() {
-     // get vehicle type array object
-     this._service.vehicleType().subscribe(res => {
-      this.option = res;
+    this.route.data.subscribe((data: {singleVehicle: Vehicle}) => {
+      this.vehicleObj = data.singleVehicle;
+      this.status = this.vehicleObj.status;
+      this.seats = this.vehicleObj.seats;
+      this.reg = this.vehicleObj.regNo;
+      this.mileage = this.vehicleObj.mileage;
+      this.created = this.vehicleObj.createdAt;
+      this.manfYear = this.vehicleObj.manufYear;
+      this.vehicleId = this.vehicleObj.id;
     });
-    this.getVehicle();
-  }
-
-  getVehicle() {
-    const id = +this.route.snapshot.paramMap.get('id');
-    return this._service.getVehicle(id).subscribe((data: Vehicle) => {this.vehicle = data.vehicle; });
   }
 
 }

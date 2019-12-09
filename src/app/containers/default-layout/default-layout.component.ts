@@ -1,8 +1,9 @@
-import { Company } from './../../_models/create_company.model';
+import { Company } from '../../_models/company.model';
 import { Component, OnInit } from '@angular/core';
 import { navItems } from '../../_nav';
 import { AuthService } from '../../services/auth.service';
-import { CompanyService } from '../../services/company.service';
+import { Event, NavigationStart, NavigationEnd, Router } from '@angular/router';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-dashboard',
@@ -11,9 +12,23 @@ import { CompanyService } from '../../services/company.service';
 export class DefaultLayoutComponent implements OnInit {
   public sidebarMinimized = false;
   public navItems = navItems;
-  company = [];
+  company: Company;
 
-  constructor(private auth: AuthService, private _companyService: CompanyService) {}
+  showLoadingIndicator = true;
+  constructor(private auth: AuthService, private _route: Router, private spinner: NgxSpinnerService) {
+    this._route.events.subscribe((routerEvent: Event) => {
+       if (routerEvent instanceof NavigationStart) {
+        this.showLoadingIndicator = true;
+        this.spinner.show();
+       }
+
+       if (routerEvent instanceof NavigationEnd) {
+        this.showLoadingIndicator = true;
+        this.spinner.hide();
+      }
+
+    } );
+  }
 
   currentUser = this.auth.currentUserValue;
   companyId: number = this.currentUser.companyId;
@@ -21,19 +36,15 @@ export class DefaultLayoutComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.getCompany();
+    // this.getCompany();
   }
 
-  getCompany() {
-    this._companyService.getCompany(this.companyId).subscribe(data => this.company = data);
-  }
+  // getCompany() {
+  //   this._companyService.getCompany(this.companyId).subscribe((data: Company) => this.company = data);
+  // }
 
   toggleMinimize(e) {
     this.sidebarMinimized = e;
   }
 
-  // getValues(data) {
-  //    this.companyName = data.shortName;
-  //    return this.companyName;
-  // }
 }

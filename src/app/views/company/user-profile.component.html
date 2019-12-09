@@ -1,5 +1,5 @@
 <div class="container-fluid">
-    <div class="row">
+    <div class="row" >
       <div class="col-md-3">
 
         <!-- Profile Image -->
@@ -12,11 +12,11 @@
                    alt="User profile picture">
             </div>
 
-            <h3 class="profile-username text-center">Victor Smith</h3>
+            <h3 class="profile-username text-center">{{name}}</h3>
 
-            <p class="text-muted text-center">Role: Driver</p>
+            <p class="text-muted text-center">{{roles}}</p>
 
-            <a href="#" class="btn btn-primary btn-block"><b>Make Driver</b></a>
+            <a *ngIf="roles != 'DRIVER'" class="btn btn-primary btn-block"><b>Make Driver</b></a>
           </div>
           <!-- /.card-body -->
         </div>
@@ -41,21 +41,21 @@
                 <tbody>
                     <tr>
                         <th>Name</th>
-                        <td><span style="font-weight:bold">Smith</span></td>
+                        <td><span style="font-weight:bold">{{name}}</span></td>
                     </tr>
                     <tr>
                         <th>Email</th>
-                        <td><span style="font-weight:bold">Smith</span></td>
+                        <td><span style="font-weight:bold">{{email}}</span></td>
 
                     </tr>
                     <tr>
                         <th>Phone Number</th>
-                        <td><span style="font-weight:bold">0706118959</span></td>
+                        <td><span style="font-weight:bold">{{phone}}</span></td>
 
                     </tr>
                     <tr>
                         <th>Role</th>
-                        <td><span style="font-weight:bold">Driver</span></td>
+                        <td><span style="font-weight:bold">{{roles}}</span></td>
 
                     </tr>
 
@@ -65,7 +65,7 @@
 
     </div>
     <!-- /.row -->
-    <div class="row">
+    <div class="row" *ngIf="roles == 'DRIVER'">
         <div class="col-md-12">
             <!-- <div class="card"> -->
                 <tabset>
@@ -75,7 +75,7 @@
                               <div class="card">
                                 <div class="card-header">
                                   <i class="fa fa-align-justify"></i> Driver Documents
-                                  <button type="button" class="btn btn-pill btn-success pull-right " routerLink="/drivers/driver-docs-upload"><i class="fa fa-plus"></i>&nbsp;Add driver Document</button>
+                                  <button type="button" class="btn btn-pill btn-success pull-right " routerLink="/drivers/driver-docs-upload/{{userId}}"><i class="fa fa-plus"></i>&nbsp;Add driver Document</button>
                                 </div>
                                 <div class="card-body">
 

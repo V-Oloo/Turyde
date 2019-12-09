@@ -8,7 +8,7 @@
   [asideMenuToggler]="'lg'">
   <ul class="nav navbar-nav d-md-down-none" >
     <li class="nav-item px-3" >
-      <a class="nav-link" [style.color]="'white'" [routerLink]="['/dashboard']">Dashboard</a>
+      <a class="nav-link" [style.color]="'white'" [routerLink]="['/company-dashboard']">Dashboard</a>
     </li>
 
   </ul>
@@ -42,6 +42,13 @@
     <cui-breadcrumb></cui-breadcrumb>
 
     <div class="container-fluid">
+      <div *ngIf="showLoadingIndicator">
+
+          	<ngx-spinner [fullScreen]="false" type="ball-clip-rotate-multiple" size="medium">
+                <p class="loading">Loading...</p>
+            </ngx-spinner>
+
+      </div>
       <router-outlet></router-outlet>
     </div><!-- /.container-fluid -->
   </main>

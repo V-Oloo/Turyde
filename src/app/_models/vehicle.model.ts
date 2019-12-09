@@ -1,4 +1,5 @@
 export class Vehicle {
+  [x: string]: any;
 
   vehicle: [
    {

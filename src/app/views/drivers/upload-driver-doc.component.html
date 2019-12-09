@@ -38,11 +38,10 @@
                                   <input type="text" class="form-control" formControlName="ExpiresOn" placeholder="yyyy-mm-dd" bsDatepicker>
                                 </div>
                              </div>
-                             <div class="example-block col-md-6">
+                             <div class="col-md-6">
                                 <label>Image/Document *</label>
-                                <div class="custom-file form-group">
-                                    <input type="file" formControlName="image" class="custom-file-input" id="customFile">
-                                    <label class="custom-file-label" for="customFile">Choose file</label>
+                                <div class="form-control">
+                                    <input type="file" accept=".pdf, .png, .jpg, .jpeg" (change)="onFileSelected($event)">
                                 </div>
                             </div>
                          </div>

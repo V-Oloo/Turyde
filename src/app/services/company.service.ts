@@ -1,4 +1,4 @@
-import { Company } from './../_models/create_company.model';
+import { Company } from '../_models/company.model';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
@@ -20,18 +20,27 @@ export class CompanyService {
     return this.http.get<Company>(this.global._BaseUri + '/companies');
   }
 
-  getCompany(id: number): Observable<any> {
-    return this.http.get<any>(this.global._BaseUri + '/companies/' + id).pipe(map((data: any) => data.result), shareReplay());
+  getCompany(id: number): Observable<Company> {
+    return this.http.get<Company>(this.global._BaseUri + '/companies/' + id).pipe(map((data: any) => data.result), shareReplay());
   }
 
   assignCompanyRoute(id: string, data) {
     return this.http.post(this.global._BaseUri + '/companies/routes/id/assign', data);
   }
 
+  getUsers(boundary: string, companyId: number) {
+    return this.http.get(this.global._BaseUri + `/users/list/${boundary}/` + companyId)
+                    .pipe(map((data: any) => data.result.data), shareReplay());
+  }
+
+  getUser(id: string) {
+    return this.http.get(this.global._BaseUri + `/users/${id}`).pipe(map((data: any) => data.result), shareReplay());
+  }
+
   revokeCompanyRoute() {}
 
-  updateCompany(companyData: Company) {
-    return this.http.put(this.global._BaseUri + '/companies' , companyData);
+  updateCompany(id: number, companyData: Company) {
+    return this.http.put(this.global._BaseUri + `/companies/${id}` , companyData);
   }
 
 

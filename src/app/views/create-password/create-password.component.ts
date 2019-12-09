@@ -48,10 +48,9 @@ export class CreatePasswordComponent implements OnInit {
       return;
     }
     const data = this.passwordCreationForm.value;
-    console.log(data);
     this.service.createPassword({password: data.password, token: data.token, userId: data.userId }).subscribe((res: any) => {
       if (res) {
-       //  this.successMessage = 'Confrimation Mail has been sent to your account.';
+        // this.successMessage = 'Confrimation Mail has been sent to your account.';
         localStorage.setItem('JWT_TOKEN', res.token);
         this._router.navigateByUrl('/register_company');
       }

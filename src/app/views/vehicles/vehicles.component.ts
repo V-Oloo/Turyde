@@ -1,7 +1,7 @@
-import { VehicleService } from './../../services/vehicle.service';
-import { Component, OnInit, ViewChild, OnDestroy } from '@angular/core';
-import { AuthService } from '../../services/auth.service';
+import { ActivatedRoute } from '@angular/router';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subject } from 'rxjs';
+import { Vehicle } from '../../_models/vehicle.model';
 
 
 @Component({
@@ -13,14 +13,9 @@ export class VehiclesComponent implements OnInit, OnDestroy {
 
   dtOptions: DataTables.Settings = {};
 
-  currentUser = this.auth.currentUserValue;
-  companyId: number = this.currentUser.companyId;
+  vehicles: {};
 
-  vehicles: [];
-
-   dtTrigger: Subject<any> = new Subject();
-
-  constructor(private _service: VehicleService, private auth: AuthService) {}
+  constructor(private _route: ActivatedRoute) {}
 
   ngOnInit(): void {
 
@@ -29,16 +24,12 @@ export class VehiclesComponent implements OnInit, OnDestroy {
       pagingType: 'full_numbers',
       pageLength: 10
     };
-
-    this._service.getVehicles(this.companyId).subscribe(vehicles => {
-      this.vehicles = vehicles;
-      this.dtTrigger.next();
+    this._route.data.subscribe((data: {vehicles: Vehicle}) => {
+      this.vehicles = data.vehicles;
     });
   }
 
   ngOnDestroy(): void {
-    // Do not forget to unsubscribe the event
-    this.dtTrigger.unsubscribe();
   }
 
 }

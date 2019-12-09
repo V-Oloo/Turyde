@@ -43,7 +43,7 @@ export class RegisterCompanyComponent implements OnInit {
       this.service.registerCompany(this.companyForm.value).subscribe((res: any) => {
         if (res) {
           // localStorage.setItem('CompanyId', res.result.id);
-          this._router.navigateByUrl('/dashboard');
+          this._router.navigateByUrl('/company/update-company');
         }
       },
       (err: any) => {

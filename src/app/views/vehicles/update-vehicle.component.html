@@ -1,71 +1,77 @@
 <div class="animated fadeIn">
-  <div class="row">
-    <div class="col-md-8">
-      <div class="card">
-        <div class="card-body">
-          <form [formGroup]="addVehicleForm">
+  <div class="container">
+      <div class="row mt-5">
+          <div class="col-md-12">
+            <div class="card">
+              <div class="card-body">
+                <form [formGroup]="addVehicleForm">
+                  <div class="card-header">
+                    <i class="fa fa-align-justify"></i> Update Vehicle
+                 </div>
+                  <div class="modal-body">
 
-            <div class="modal-body">
-
-              <div class="row">
-                  <div class="col-md-6">
-                      <label>Reistration No. *</label>
-                      <div class="form-group">
-                        <input type="text" class="form-control" formControlName="regNo" id="city"
-                          placeholder="Vehicle Name">
-                      </div>
-                  </div>
-                  <div class="col-md-6">
-                    <label>Vehicle Type *</label>
-                    <div class="form-group">
-                      <ngx-select formControlName="vehicleTypeId" [allowClear]="true" optionValueField="id"
-                        optionTextField="type" placeholder="No type selected">
-                      </ngx-select>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label>Reistration No. *</label>
+                            <div class="form-group">
+                              <input type="text" class="form-control" formControlName="regNo" id="city"
+                                placeholder="Vehicle Name">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                          <label>Vehicle Type *</label>
+                          <div class="form-group">
+                            <ngx-select formControlName="vehicleTypeId" optionValueField="id" optionTextField="name"
+                              [items]="option" [allowClear]="true"
+                              placeholder="No type selected">
+                            </ngx-select>
+                          </div>
+                        </div>
                     </div>
-                  </div>
-              </div>
-              <div class="row">
-                  <div class="col-md-6">
-                      <label>No. of Seats *</label>
-                      <div class="form-group">
-                        <input type="number" min="0" value="0" formControlName="seats" class="form-control" id="seats"
-                          placeholder="number of seats">
-                      </div>
-                  </div>
-                  <div class="col-md-6">
-                      <label>Manufactured Year *</label>
-                      <div class="form-group">
-                        <input formControlName="manufYear" type="number" min="0" value="0" class="form-control" id="seats"
-                          placeholder="Manufactured year ">
-                      </div>
-                  </div>
-              </div>
-              <div class="row">
-                <div class="col-md-6">
-                  <label>Milage *</label>
-                  <div class="form-group">
-                    <input formControlName="mileage" type="number" min="0" value="0" class="form-control" id="seats"
-                      placeholder="Mileage covered">
-                  </div>
-                </div>
-                <div class="col-md-6">
-                    <label>Status *</label>
-                    <div class="form-group">
-                      <input formControlName="status" type="number" min="0" value="0" class="form-control" id="seats"
-                        placeholder="status">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label>No. of Seats *</label>
+                            <div class="form-group">
+                              <input type="number" min="0" value="0" formControlName="seats" class="form-control" id="seats"
+                                placeholder="number of seats">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label>Manufactured Year *</label>
+                            <div class="form-group">
+                              <input formControlName="manufYear" type="number" min="0" value="0" class="form-control" id="seats"
+                                placeholder="Manufactured year ">
+                            </div>
+                        </div>
                     </div>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <label>Milage *</label>
+                        <div class="form-group">
+                          <input formControlName="mileage" type="number" min="0" value="0" class="form-control" id="seats"
+                            placeholder="Mileage covered">
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                          <label>Status *</label>
+                          <div class="form-group">
+                            <input formControlName="status" type="text" class="form-control" id="seats"
+                              placeholder="status">
+                          </div>
+                        </div>
+                    </div>
+
                   </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary">Close</button>
+                    <button type="button" class="btn btn-primary">Update Vehicle</button>
+                  </div>
+
+                </form>
               </div>
-
             </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary">Close</button>
-              <button type="button" class="btn btn-primary">Update Vehicle</button>
-            </div>
-
-          </form>
+          </div>
         </div>
-      </div>
-    </div>
   </div>
+
 </div>

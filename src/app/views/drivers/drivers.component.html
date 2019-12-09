@@ -15,25 +15,21 @@
                   <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="table table-bordered row-border hove" style="width:100%">
                       <thead class="text-center">
                           <tr>
-                              <th>Name</th>
-                              <th>Position</th>
-                              <th>Office</th>
-                              <th>Age</th>
-                              <th>Start date</th>
-                              <th>Salary</th>
+                              <th>Full Name</th>
+                              <th>Phone Number</th>
+                              <th>Email</th>
+                              <th>Role</th>
                               <th>Action</th>
                               <th>Status</th>
                           </tr>
                       </thead>
                       <tbody>
 
-                          <tr class="text-center">
-                              <td>oloo</td>
-                              <td>SR</td>
-                              <td>Mine</td>
-                              <td>24</td>
-                              <td>1200</td>
-                              <td>1200</td>
+                          <tr class="text-center" *ngFor="let item of drivers">
+                              <td>{{item.fullName}}</td>
+                              <td>{{item.phoneNumber}}</td>
+                              <td>{{item.email}}</td>
+                              <td>{{item.roles}}</td>
                               <td>
                                 <div class="btn-group mt-2" role="group">
                                     <button type="button" class="btn btn-success"><i class="fa fa-list"></i></button>

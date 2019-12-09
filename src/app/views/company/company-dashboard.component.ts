@@ -1,32 +1,44 @@
-import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../../services/auth.service';
-import { CompanyService } from '../../services/company.service';
+import { AuthService } from './../../services/auth.service';
+import { ActivatedRoute } from '@angular/router';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-company-dashboard',
   templateUrl: './company-dashboard.component.html',
   styles: []
 })
-export class CompanyDashboardComponent implements OnInit {
+export class CompanyDashboardComponent implements OnInit, OnDestroy {
 
   dtOptions: DataTables.Settings = {};
-  company: {};
+  users: {};
+  company;
+  companyName;
+  dtTrigger: Subject<any> = new Subject();
 
-  constructor(private auth: AuthService, private _companyService: CompanyService) {}
+  constructor(private _route: ActivatedRoute) {}
 
-  currentUser = this.auth.currentUserValue;
-  companyId: number = this.currentUser.companyId;
+  ngOnInit() {
 
-  ngOnInit(): void {
-    // this.getCompany();
     this.dtOptions = {
       pagingType: 'full_numbers'
     };
+
+    this._route.data.subscribe((data: { usersList: any }) => {
+       this.users = data.usersList;
+
+    });
+
+    this._route.data.subscribe((data: {company: any}) => {
+        this.company = data.company;
+        this.companyName = this.company.shortName;
+    });
+
   }
 
-  getCompany() {
-    // console.log('this is the id' + this.companyId);
-    this._companyService.getCompany(this.companyId).subscribe(data => this.company = data);
+  ngOnDestroy() {
+    // Do not forget to unsubscribe the event
+    // this.dtTrigger.unsubscribe();
   }
 
 }

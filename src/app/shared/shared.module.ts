@@ -10,6 +10,7 @@ import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { ButtonsModule } from 'ngx-bootstrap/buttons';
 import { AlertModule } from 'ngx-bootstrap/alert';
 import { NgxSelectModule } from 'ngx-select-ex';
+import { NgxSpinnerModule } from 'ngx-spinner';
 // import {Grid} from '@ag-grid-community/all-modules';
 
 
@@ -28,6 +29,7 @@ import { NgxSelectModule } from 'ngx-select-ex';
     NgxSelectModule,
     BsDropdownModule.forRoot(),
     AlertModule.forRoot(),
+    NgxSpinnerModule
     // Grid
   ],
   exports: [
@@ -43,6 +45,7 @@ import { NgxSelectModule } from 'ngx-select-ex';
     ButtonsModule,
     BsDropdownModule,
     AlertModule,
+    NgxSpinnerModule
     // Grid
   ]
 })

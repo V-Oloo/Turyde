@@ -1,9 +1,12 @@
+import { SingleVehicleResolverService } from './single-vehicle-resolver.service';
+import { VehicleResolverService } from './vehicle-resolver.service';
 import { AddVehicleComponent } from './add-vehicle.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { VehiclesComponent } from './vehicles.component';
 import { VehicleDetailsComponent } from './vehicle-details.component';
 import { UpdateVehicleComponent } from './update-vehicle.component';
+import { VehicleTypeResolverService } from './vehicle-type-resolver.service';
 
 
 const routes: Routes = [
@@ -20,6 +23,7 @@ const routes: Routes = [
       {
         path: 'vehicles',
         component: VehiclesComponent,
+        resolve: {vehicles: VehicleResolverService},
         data: {
           title: 'vehicles'
         }
@@ -34,13 +38,15 @@ const routes: Routes = [
       {
         path: 'vehicle-details/:id',
         component: VehicleDetailsComponent,
+        resolve: {singleVehicle: SingleVehicleResolverService},
         data: {
           title: 'vehicle Details'
         }
       },
       {
-        path: 'update-vehicle',
+        path: 'update-vehicle/:id',
         component: UpdateVehicleComponent,
+        resolve: {singleVehicle: SingleVehicleResolverService, vehicleType: VehicleTypeResolverService},
         data: {
           title: 'Update Vehicle'
         }

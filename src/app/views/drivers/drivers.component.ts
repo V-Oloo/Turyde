@@ -25,7 +25,7 @@ export class DriversComponent implements OnInit, OnDestroy {
     this.dtOptions = {
       pagingType: 'full_numbers'
     };
-    this._service.getDrivers().subscribe(drivers => {
+    this._service.getDrivers(this.companyId).subscribe(drivers => {
       this.drivers = drivers;
       this.dtTrigger.next();
     });
