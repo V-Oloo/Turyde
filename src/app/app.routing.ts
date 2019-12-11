@@ -1,3 +1,4 @@
+import { Boundary } from './_models/boundary.model';
 import { CreatePasswordComponent } from './views/create-password/create-password.component';
 import { LandingpageComponent } from './landingpage/landingpage.component';
 import { RegisterCompanyComponent } from './views/register-company/register-company.component';
@@ -82,6 +83,9 @@ export const routes: Routes = [
     children: [
       {
         path: 'dashboard',
+        data: {
+          boundary: [Boundary.Company]
+        },
         loadChildren: () => import('./views/dashboard/dashboard.module').then(m => m.DashboardModule)
       },
       {

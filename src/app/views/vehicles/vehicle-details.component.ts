@@ -11,8 +11,12 @@ import { Vehicle } from '../../_models/vehicle.model';
 })
 export class VehicleDetailsComponent implements OnInit {
 
+  public option;
+
   vehicleObj: any;
   reg; mileage; status; seats; created; manfYear; vehicleId;
+  isShowDriver = false;
+  isShowRoute = false;
 
   constructor(private route: ActivatedRoute) { }
 
@@ -29,6 +33,12 @@ export class VehicleDetailsComponent implements OnInit {
       this.manfYear = this.vehicleObj.manufYear;
       this.vehicleId = this.vehicleObj.id;
     });
+  }
+  assignDriverDisplay() {
+    this.isShowDriver = !this.isShowDriver;
+  }
+  assignRouteDisplay() {
+    this.isShowRoute = !this.isShowRoute;
   }
 
 }

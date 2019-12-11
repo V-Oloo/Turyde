@@ -5,14 +5,7 @@ import { NgxSpinnerService } from 'ngx-spinner';
 @Component({
   // tslint:disable-next-line
   selector: 'body',
-  template: `<div *ngIf="showLoadingIndicator">
-
-                <ngx-spinner [fullScreen]="false" type="ball-clip-rotate-multiple" size="medium">
-                    <p class="loading">Loading...</p>
-                </ngx-spinner>
-
-              </div>
-             <router-outlet></router-outlet>`
+  template: '<router-outlet></router-outlet>'
 })
 export class AppComponent implements OnInit {
   showLoadingIndicator = true;

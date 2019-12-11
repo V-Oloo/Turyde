@@ -1,0 +1,107 @@
+<div class="animated fadeIn">
+    <div class="row">
+        <div class="col-md-12">
+          <tabset>
+              <tab heading="Vehicle Documents Info">
+                  <div class="card">
+                      <div class="card-header">
+                        <i class="fa fa-align-justify"></i> Driver Documents
+                      </div>
+                      <div class="card-body">
+
+                          <table datatable [dtOptions]="dtOptions"  class="table table-bordered row-border hove" style="width:100%">
+                              <thead class="text-center">
+                                  <tr>
+                                      <th>Document Name</th>
+                                      <th>Date Of Issue</th>
+                                      <th>Expires On</th>
+                                      <th>File Type</th>
+                                      <th>Status</th>
+                                      <th>Action</th>
+                                  </tr>
+                              </thead>
+                              <tbody>
+
+                                  <tr class="text-center">
+                                      <td>Log Book</td>
+                                      <td>12/11/2019</td>
+                                      <td>12/31/2021</td>
+                                      <td>.PNG</td>
+                                      <td>Active</td>
+                                      <td>
+                                        <div class="btn-group mt-2" role="group">
+                                            <button type="button" class="btn btn-success" routerLink="/company/user-profile"><i class="fa fa-list"></i></button>
+                                            <button type="button" class="btn btn-primary"><i class="fa fa-edit"></i></button>
+                                            <button type="button" class="btn btn-danger"><i class="fa fa-trash"></i></button>
+                                          </div>
+                                      </td>
+                                  </tr>
+
+                              </tbody>
+
+                          </table>
+
+                      </div>
+                    </div>
+              </tab>
+              <tab heading="Add Vehicle Doc">
+                  <div class="card">
+                      <div class="card-body">
+                          <form [formGroup]="uploadUserDocs">
+                              <div class="card-header">
+                                  <i class="fa fa-align-justify"></i> Add Vehicle Documents
+                              </div>
+                              <div class="modal-body">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label>Document Type. *</label>
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" formControlName="DocTypeName" placeholder="Document Type">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="postal-code">Date Of Issue</label>
+                                        <div class="input-group">
+
+                                          <div class="input-group-prepend">
+                                              <button class="fa fa-calendar" type="button"></button>
+                                          </div>
+                                          <input class="form-control" formControlName="DateIssued" placeholder="yyyy-mm-dd" bsDatepicker>
+                                        </div>
+                                     </div>
+                                </div>
+                               <div class="row">
+                                   <div class="col-md-6">
+                                      <label for="postal-code">Expires On</label>
+                                      <div class="input-group">
+
+                                        <div class="input-group-prepend">
+                                            <button class="fa fa-calendar" type="button"></button>
+                                        </div>
+                                        <input type="text" class="form-control" formControlName="ExpiresOn" placeholder="yyyy-mm-dd" bsDatepicker>
+                                      </div>
+                                   </div>
+                                   <div class="col-md-6">
+                                      <label>Image/Document *</label>
+                                      <div class="form-control">
+                                          <input type="file" accept=".pdf, .png, .jpg, .jpeg" (change)="onFileSelected($event)">
+                                      </div>
+                                  </div>
+                               </div>
+
+
+                              </div>
+                              <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary">Close</button>
+                                <button type="button" class="btn btn-primary" (click)="onSubmit()">Upload</button>
+                              </div>
+
+                        </form>
+                      </div>
+                    </div>
+              </tab>
+          </tabset>
+        </div>
+
+    </div>
+  </div>

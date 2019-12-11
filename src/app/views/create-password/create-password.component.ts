@@ -34,7 +34,7 @@ export class CreatePasswordComponent implements OnInit {
       token: ['', [Validators.required]],
       password: ['', [Validators.required, Validators.minLength(6)]],
       confirmPass: ['', [Validators.required]],
-      userId: ['2afed38e-4d43-4990-8bbb-71dd233b6d94'],
+      userId: ['2d83bb18-bc4d-4a54-9334-5e2d1b024082'],
     }, { validator: MustMatch('password', 'confirmPass')});
   }
 

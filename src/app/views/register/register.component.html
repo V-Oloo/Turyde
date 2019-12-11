@@ -1,4 +1,4 @@
-<div class="app-body">
+<div class="app-body register-bg">
   <main class="main d-flex align-items-center">
     <div class="container">
       <div class="row">
@@ -22,24 +22,38 @@
                   <div *ngIf="successMessage" class="alert alert-success" role="alert">
                       {{successMessage}}
                     </div>
-                <div *ngIf="email.invalid && email.touched">
-                  <small class="text-danger" *ngIf="email['errors']['required']">Email is required</small>
-                  <small class="text-danger" *ngIf="email['errors']['email']">Email is Invalid</small>
-                </div>
-
+                  <hr class="colorgraph">
+                <label for="mobileNumber">Email Address<span style="color: red;">*</span></label>
                 <div class="input-group mb-3">
+
                   <div class="input-group-prepend">
                     <span class="input-group-text">@</span>
                   </div>
-                  <input type="email" [class.is-invalid] = "email.invalid && email.touched" formControlName="email" class="form-control" placeholder="Email">
+                  <input type="email" [ngClass]="{ 'is-invalid': submitted && email.errors }" formControlName="email" class="form-control" placeholder="Email">
+                  <div *ngIf="submitted && email.errors" class="invalid-feedback">
+                    <div *ngIf="email['errors']['required']">Email is Required</div>
+                    <div *ngIf="email['errors']['email']">Email is Invalid</div>
+                  </div>
                 </div>
 
 
                 <div class="form-group ">
-                  <international-phone-number class="col-md-12" [required]="true" formControlName="mobileNumber" placeholder="Enter phone number" [maxlength]="20" [defaultCountry]="'ke'" [required]="true" [allowedCountries]="['ke','ug','tz']"></international-phone-number>
+                  <label for="mobileNumber">Mobile Number<span style="color: red;">*</span></label>
+                  <international-phone-number [ngClass]="{ 'is-invalid': submitted && mobileNumber.errors }" class="col-md-12" formControlName="mobileNumber" placeholder="Enter phone number" [maxlength]="20" [defaultCountry]="'ke'" [required]="true" [allowedCountries]="['ke','ug','tz']"></international-phone-number>
+                  <div *ngIf="submitted && mobileNumber.errors" class="help-block">
+                    <div *ngIf="mobileNumber['errors']"><span style="color: red;">Mobile Number is required and should be valid</span></div>
+                  </div>
                 </div>
 
-                <button type="button" [disabled]="registrationForm.invalid" (click)="onSubmit(registrationForm.value)" class="btn btn-block btn-success">Confirm</button>
+                <div class="modal-footer">
+                  <div class="col-6">
+                    <button type="submit" (click)="onSubmit(registrationForm.value)" class="btn btn-primary px-10">Create</button>
+                  </div>
+                  <div class="col-6 text-right">
+                    <button type="button" class="btn btn-link px-0">Have an account? Login</button>
+                  </div>
+                </div>
+
               </form>
             </div>
           </div>

@@ -10,6 +10,8 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 export class RegisterComponent implements OnInit {
   public errMessage: string;
   public successMessage: string;
+  public submitted = false;
+
 
   registrationForm: FormGroup;
 
@@ -19,7 +21,7 @@ export class RegisterComponent implements OnInit {
     return this.registrationForm.get('email');
   }
 
-  get mobile() {
+  get mobileNumber() {
     return this.registrationForm.get('mobileNumber');
   }
 
@@ -32,16 +34,25 @@ export class RegisterComponent implements OnInit {
   }
 
   onSubmit(form: SignUp) {
-    if (this.registrationForm.valid) {
+    this.submitted = true;
+
+    if (this.registrationForm.invalid) {
+
+       return;
+    }{
 
       this.service.registerUser(form).subscribe((res: any) => {
         if (res) {
           this.successMessage = 'Confrimation Mail has been sent to your account.';
-          localStorage.setItem('JWT_TOKEN', res.accessToken);
+          localStorage.setItem('JWT_TOKEN', res.result.token);
         }
 
       },
       (err: any) => {
+        if (err.error.errorMessage) {
+          this.errMessage = err.error.errorMessage;
+        }
+        this.errMessage = 'Something happened please try again';
         console.log(err);
       }
     );

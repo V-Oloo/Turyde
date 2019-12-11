@@ -1,27 +1,5 @@
 <div class="animated fadeIn">
     <div class="row" >
-        <div class="col-md-3">
-
-          <!-- Profile Image -->
-          <div class="card card-primary card-outline">
-            <div class="card-body box-profile">
-              <div class="text-center">
-                <img src="http://placehold.it/380x500"  class="img-fluid" alt="" style="max-height: 280px;" />
-              </div>
-
-              <h3 class="profile-username text-center"></h3>
-
-              <p class="text-muted text-center"></p>
-
-              <a class="btn btn-info btn-block btn-flat"><b><i class="fa fa-plus-circle"></i>ASSIGN DRIVER</b></a>
-
-            </div>
-            <!-- /.card-body -->
-          </div>
-          <!-- /.card -->
-
-        </div>
-        <!-- /.col -->
         <div class="col-md-9">
             <div class="card">
                 <div class="card-header">
@@ -30,7 +8,7 @@
                     <div class="pull-right">
                         <a class="btn btn-primary btn-sm btn-flat" routerLink="/vehicles/update-vehicle/{{vehicleId}}" ><i class="fa fa-pencil"></i>
                           EDIT VEHICLE</a>&nbsp;&nbsp;
-                        <a class="btn btn-primary btn-sm btn-flat" [routerLink]="['/vehicles/update-vehicle']" ><i class="fa fa-pencil"></i>
+                        <a class="btn btn-primary btn-sm btn-flat" [routerLink]="['/vehicles/vehicleDocs']" ><i class="fa fa-pencil"></i>
                           ADD VEHICLE DOCUMENTS</a>
                     </div>
 
@@ -78,9 +56,103 @@
             </div>
 
         </div>
+        <div class="col-md-3">
+
+          <!-- Profile Image -->
+          <div class="card card-primary card-outline">
+              <div class="card-header">
+                  <div>
+                      <a class="btn btn-primary btn-sm btn-flat" (click) = "assignDriverDisplay()">ASSIGN DRIVER</a>&nbsp;&nbsp;
+                      <a class="btn btn-primary btn-sm btn-flat" (click) = "assignRouteDisplay()">ASSIGN ROUTE</a>
+                  </div>
+
+                </div>
+            <div class="card-body box-profile">
+              <div class="text-center">
+                <img src="http://placehold.it/380x500"  class="img-fluid" alt="" style="max-height: 250px;" />
+              </div>
+
+            </div>
+            <!-- /.card-body -->
+          </div>
+          <!-- /.card -->
+
+        </div>
+        <!-- /.col -->
+
 
       </div>
       <!-- /.row -->
+
+      <div class="row">
+          <div class="col-md-6" *ngIf = "isShowDriver">
+              <!-- Assign Driver -->
+              <div class="card card-primary card-outline">
+                <div class="card-body box-profile">
+                  <form>
+
+                    <div class="login-form-header">
+                      <div class="login-header">
+                          <h4 class="bold color-white">Assign Driver</h4>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="example-block col-md-12">
+                        <label>Select Driver <span style="color: red;">*</span></label>
+                        <div class="form-group">
+                            <ngx-select
+                            [allowClear]="true"
+                            optionValueField="id" optionTextField="name"
+                            [items]="option"
+                            placeholder="No Driver Selected">
+                           </ngx-select>
+
+                        </div>
+                    </div>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="submit" class="btn btn-primary">Assign Driver</button>
+                    </div>
+                  </form>
+                </div>
+                <!-- /.card-body -->
+              </div>
+              <!-- /.card -->
+          </div>
+          <div class="col-md-6" *ngIf = "isShowRoute">
+              <!-- Assign Operating Route -->
+              <div class="card card-primary card-outline">
+                <div class="card-body box-profile">
+                  <form>
+                    <div class="login-form-header">
+                      <div class="login-header">
+                          <h4 class="bold color-white">Assign Route</h4>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="example-block col-md-12">
+                        <label>Select Operating Route <span style="color: red;">*</span></label>
+                        <div class="form-group">
+                            <ngx-select
+                            [allowClear]="true"
+                            optionValueField="id" optionTextField="name"
+                            [items]="option"
+                            placeholder="No Route Selected">
+                           </ngx-select>
+
+                        </div>
+                    </div>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="submit" class="btn btn-primary">Assign Route</button>
+                    </div>
+                  </form>
+                </div>
+                <!-- /.card-body -->
+              </div>
+              <!-- /.card -->
+          </div>
+      </div>
 </div>
 
 

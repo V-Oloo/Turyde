@@ -9,10 +9,11 @@ import { VehicleDetailsComponent } from './vehicle-details.component';
 import { UpdateVehicleComponent } from './update-vehicle.component';
 import { AddVehicleComponent } from './add-vehicle.component';
 import { VehicleTypeResolverService } from './vehicle-type-resolver.service';
+import { VehicleDocsComponent } from './vehicle-docs.component';
 
 
 @NgModule({
-  declarations: [VehiclesComponent, VehicleDetailsComponent, UpdateVehicleComponent, AddVehicleComponent],
+  declarations: [VehiclesComponent, VehicleDetailsComponent, UpdateVehicleComponent, AddVehicleComponent, VehicleDocsComponent],
   imports: [
     SharedModule,
     VehiclesRoutingModule

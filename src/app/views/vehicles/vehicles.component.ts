@@ -15,6 +15,8 @@ export class VehiclesComponent implements OnInit, OnDestroy {
 
   vehicles: {};
 
+
+
   constructor(private _route: ActivatedRoute) {}
 
   ngOnInit(): void {

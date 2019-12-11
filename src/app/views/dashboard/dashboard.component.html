@@ -4,8 +4,8 @@
       <div class="card">
         <div class="card-body p-3 clearfix">
           <i class="fa fa-cogs bg-primary p-3 font-2xl mr-3 float-left"></i>
-          <div class="h5 text-primary mb-0 mt-2">$1.999,50</div>
-          <div class="text-muted text-uppercase font-weight-bold font-xs">Income</div>
+          <div class="h5 text-primary mb-0 mt-2">100</div>
+          <div class="text-muted text-uppercase font-weight-bold font-xs">Companies</div>
         </div>
       </div>
     </div>
@@ -14,8 +14,8 @@
       <div class="card">
         <div class="card-body p-3 clearfix">
           <i class="fa fa-laptop bg-info p-3 font-2xl mr-3 float-left"></i>
-          <div class="h5 text-info mb-0 mt-2">$1.999,50</div>
-          <div class="text-muted text-uppercase font-weight-bold font-xs">Income</div>
+          <div class="h5 text-info mb-0 mt-2">1500</div>
+          <div class="text-muted text-uppercase font-weight-bold font-xs">Vehicles</div>
         </div>
       </div>
     </div>
@@ -24,7 +24,7 @@
       <div class="card">
         <div class="card-body p-3 clearfix">
           <i class="fa fa-moon-o bg-warning p-3 font-2xl mr-3 float-left"></i>
-          <div class="h5 text-warning mb-0 mt-2">$1.999,50</div>
+          <div class="h5 text-warning mb-0 mt-2">KSH 1M</div>
           <div class="text-muted text-uppercase font-weight-bold font-xs">Income</div>
         </div>
       </div>
@@ -34,8 +34,8 @@
       <div class="card">
         <div class="card-body p-3 clearfix">
           <i class="fa fa-bell bg-danger p-3 font-2xl mr-3 float-left"></i>
-          <div class="h5 text-danger mb-0 mt-2">$1.999,50</div>
-          <div class="text-muted text-uppercase font-weight-bold font-xs">Income</div>
+          <div class="h5 text-danger mb-0 mt-2">100</div>
+          <div class="text-muted text-uppercase font-weight-bold font-xs">Routes</div>
         </div>
       </div>
     </div>
@@ -46,34 +46,34 @@
       <div class="col-lg-12">
         <div class="card">
           <div class="card-header">
-            <i class="fa fa-align-justify"></i> Users Table
+            <i class="fa fa-align-justify"></i> Companies
           </div>
           <div class="card-body">
 
               <table datatable [dtOptions]="dtOptions"  class="table table-bordered row-border hove" style="width:100%">
                   <thead class="text-center">
                       <tr>
-                          <th>Name</th>
-                          <th>Position</th>
-                          <th>Office</th>
-                          <th>Age</th>
-                          <th>Start date</th>
-                          <th>Salary</th>
+                          <th>Code</th>
+                          <th>Company Name</th>
+                          <th>Email</th>
+                          <th>Contact NO.</th>
+                          <th>Status</th>
+                          <th>Date Created</th>
                           <th>Action</th>
                       </tr>
                   </thead>
                   <tbody>
 
                       <tr class="text-center">
-                          <td>oloo</td>
-                          <td>SR</td>
-                          <td>Mine</td>
-                          <td>24</td>
-                          <td>1200</td>
-                          <td>1200</td>
+                          <td>10002</td>
+                          <td>Express Transporters</td>
+                          <td>oloov534@gmail.com</td>
+                          <td>+254 706 118 959</td>
+                          <td>Active</td>
+                          <td>12/15/2019</td>
                           <td>
                             <div class="btn-group mt-2" role="group">
-                                <button type="button" class="btn btn-success" data-toggle="modal" (click)="myModal.show()"><i class="fa fa-list"></i></button>
+                                <button type="button" class="btn btn-success"><i class="fa fa-list"></i></button>
                                 <button type="button" class="btn btn-primary"><i class="fa fa-edit"></i></button>
                                 <button type="button" class="btn btn-danger"><i class="fa fa-trash"></i></button>
                               </div>
@@ -91,23 +91,4 @@
 
 </div>
 
-<div bsModal #myModal="bs-modal" class="modal fade"  [config]="{backdrop: 'static'}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h4 class="modal-title">Modal title</h4>
-          <button type="button" class="close" (click)="myModal.hide()" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <p>One fine body&hellip;</p>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" (click)="myModal.hide()">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
-        </div>
-      </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
-  </div><!-- /.modal -->
 

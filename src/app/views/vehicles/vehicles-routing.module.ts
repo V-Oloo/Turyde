@@ -1,3 +1,4 @@
+import { VehicleDocsComponent } from './vehicle-docs.component';
 import { SingleVehicleResolverService } from './single-vehicle-resolver.service';
 import { VehicleResolverService } from './vehicle-resolver.service';
 import { AddVehicleComponent } from './add-vehicle.component';
@@ -49,6 +50,14 @@ const routes: Routes = [
         resolve: {singleVehicle: SingleVehicleResolverService, vehicleType: VehicleTypeResolverService},
         data: {
           title: 'Update Vehicle'
+        }
+      },
+      {
+        path: 'vehicleDocs',
+        component: VehicleDocsComponent,
+        resolve: {},
+        data: {
+          title: 'Upload Vehicle Documents'
         }
       },
     ]

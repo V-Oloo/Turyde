@@ -27,13 +27,13 @@ export class AddDriverComponent implements OnInit {
       phoneNumber: [''],
       email: ['', [Validators.required]],
       boundary: ['COMPANY'],
-      roles: ['DRIVER'],
+      roles: [['DRIVER']],
     });
   }
 
   onSubmit() {
+    console.log(this.createUser.value);
      this._service.addDriver(this.createUser.value).subscribe(res => {
-                // console.log(res);
                 this.createUser.reset();
                 this.toastr.success('Driver added successfully!', 'Driver Added');
                 this.router.navigate(['/drivers/drivers']);

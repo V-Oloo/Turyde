@@ -6,6 +6,7 @@ import { HttpClient } from '@angular/common/http';
 import {shareReplay, map} from 'rxjs/operators';
 import * as moment from 'moment';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { JwtHelperService } from '@auth0/angular-jwt';
 
 
 @Injectable({
@@ -17,6 +18,7 @@ export class AuthService {
 
   private currentUserSubject: BehaviorSubject<any>;
   public currentUser: Observable<any>;
+  helper = new JwtHelperService();
 
   constructor(private http: HttpClient, private global: Globals) {
     this.currentUserSubject = new BehaviorSubject<any>(JSON.parse(localStorage.getItem('currentUser')));
@@ -29,13 +31,14 @@ export class AuthService {
 
   isLoggedIn(): boolean {
     return !!this.getJwtToken();
+    // return !this.helper.isTokenExpired(token);
   }
 
   registerUser(user: SignUp) {
      return this.http.post<any>(this.global._BaseUri + '/users/signup' , user);
   }
 
-  createPassword(user) {
+  createPassword(user: { password: any; token: any; userId: any; }) {
     return this.http.post<any>(this.global._BaseUri + '/users/confirmemail' , user);
  }
 
