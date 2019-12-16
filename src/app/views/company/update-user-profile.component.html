@@ -6,94 +6,66 @@
           <form [formGroup]="userProfileForm">
             <!-- <div class="modal-header"> -->
                 <div class="card-header">
-                    <i class="fa fa-align-justify"></i> Company Profile
+                    <i class="fa fa-align-justify"></i> User Profile
                 </div>
             <!-- </div> -->
             <div class="modal-body" >
 
-            <div class="form-row">
-                  <div class="col mb-3">
-                    <label>First Name. *</label>
-                    <input type="text" [ngClass]="{ 'is-invalid': submitted && f.shortName.errors }" value="items" formControlName="shortName" class="form-control" placeholder="Company Short Name">
-                    <div *ngIf="submitted && f.shortName.errors" class="invalid-feedback">
-                      <div *ngIf="f.shortName['errors']['required']">Short Name is required</div>
-                    </div>
-                  </div>
-
-                  <div class="col mb-3">
-                      <label>Company Legal Name. *</label>
-                      <input type="text" formControlName="legalName" class="form-control" placeholder="Company Legal Name">
-                  </div>
-                  <div class="col mb-3">
-                      <label>Country code. *</label>
-                      <input type="text" [ngClass]="{ 'is-invalid': submitted && f.countryCode.errors }" formControlName="countryCode" class="form-control" placeholder="Country Code">
-                      <div *ngIf="submitted && f.countryCode.errors" class="invalid-feedback">
-                        <div *ngIf="f.countryCode['errors']['required']">Country code is required</div>
+                <div class="form-row">
+                      <div class="col mb-3">
+                        <label>First Name. *</label>
+                        <input type="text" [ngClass]="{ 'is-invalid': submitted && fname.errors }" value="items" formControlName="firstName" class="form-control" placeholder="First Name">
+                        <div *ngIf="submitted && fname.errors" class="invalid-feedback">
+                          <div *ngIf="fname['errors']['required']">First Name is required</div>
+                        </div>
                       </div>
-                  </div>
-            </div>
-            <div class="form-row">
-              <div class="col mb-3">
-                  <label>Currency code. *</label>
-                  <input type="text" formControlName="currencyCode" class="form-control" placeholder="Currency code">
-              </div>
-              <div class="col mb-3">
-                  <label>Government Registration Number. *</label>
-                  <input type="text" formControlName="govRegNo" class="form-control" placeholder="Government Registration Number">
-              </div>
 
-              <div class="col mb-3">
-                  <label>Government Tax Number. *</label>
-                  <input type="text" formControlName="govTaxNo" class="form-control" placeholder="Government Tax Number">
+                      <div class="col mb-3">
+                        <label>Last Name. *</label>
+                        <input type="text" [ngClass]="{ 'is-invalid': submitted && lname.errors }" value="items" formControlName="lastName" class="form-control" placeholder="Last Name">
+                        <div *ngIf="submitted && lname.errors" class="invalid-feedback">
+                          <div *ngIf="lname['errors']['required']">Last Name is required</div>
+                        </div>
+                      </div>
+
+                      <div class="col mb-3">
+                        <label>Email. *</label>
+                        <input type="text" [ngClass]="{ 'is-invalid': submitted && email.errors }" value="items" formControlName="email" class="form-control" placeholder="Email">
+                        <div *ngIf="submitted && email.errors" class="invalid-feedback">
+                          <div *ngIf="email['errors']['required']">Email is required</div>
+                        </div>
+                      </div>
+                </div>
+                <div class="form-row">
+                    <div class="col mb-3">
+                      <label>Phone Number. *</label>
+                      <international-phone-number class="col-md-12" [required]="true" formControlName="phoneNumber" placeholder="Enter phone number" [maxlength]="20" [defaultCountry]="'ke'" [required]="true" [allowedCountries]="['ke','ug','tz']"></international-phone-number>
+                      <div *ngIf="submitted && fname.errors" class="invalid-feedback">
+                        <div *ngIf="fname['errors']['required']">First Name is required</div>
+                      </div>
+                    </div>
+
+                    <div class="col mb-3">
+                        <label>User Roles. *</label>
+                      <input type="text" [ngClass]="{ 'is-invalid': submitted && lname.errors }" value="items" formControlName="roles" class="form-control" placeholder="User roles">
+                      <div *ngIf="submitted && lname.errors" class="invalid-feedback">
+                        <div *ngIf="lname['errors']['required']">Last Name is required</div>
+                      </div>
+                    </div>
+
+                    <div class="col mb-3">
+                      <label>Image. *</label>
+                      <input type="file" accept=".pdf, .png, .jpg, .jpeg" (change)="onFileSelected($event)" formControlName="avator" class="form-control">
+                      <div *ngIf="submitted && email.errors" class="invalid-feedback">
+                        <div *ngIf="email['errors']['required']">Email is required</div>
+                      </div>
+                    </div>
               </div>
-            </div>
-            <div class="form-row">
-                <div class="col mb-3">
-                  <label>Primary Email. *</label>
-                  <input type="text" [ngClass]="{ 'is-invalid': submitted && f.primaryEmail.errors }" formControlName="primaryEmail" class="form-control" placeholder="Primary Email">
-                  <div *ngIf="submitted && f.primaryEmail.errors" class="invalid-feedback">
-                    <div *ngIf="f.primaryEmail['errors']['required']">Primary Email is required</div>
-                  </div>
-                </div>
-
-               <div class="col mb-3">
-                  <label>Primary Mobile Number. *</label>
-                  <input type="text" formControlName="primaryMobileNo" class="form-control" placeholder="Primary Mobile Number">
-                  <!-- <div *ngIf="submitted && f.primaryMobileNo.errors" class="invalid-feedback">
-                    <div *ngIf="f.primaryMobileNo['errors']['required']">Primary Mobile Number required</div>
-                  </div> -->
-                </div>
-                <div class="col mb-3">
-                    <label>Primary Email Verified</label>
-                    <input type="text" formControlName="pEmailVerified" class="form-control" placeholder="Primary Email">
-                    <!-- <div *ngIf="submitted && f.pEmailVerified.errors" class="invalid-feedback">
-                      <div *ngIf="f.pEmailVerified['errors']['required']">Primary Email is required</div>
-                    </div> -->
-                </div>
-            </div>
-            <div class="form-row">
-               <div class="col mb-3">
-                  <label>Primary Mobile Verified</label>
-                  <input type="text" [ngClass]="{ 'is-invalid': submitted && f.pMobileVerified.errors }" formControlName="pMobileVerified" class="form-control" placeholder="Primary Mobile Verified">
-                  <div *ngIf="submitted && f.pMobileVerified.errors" class="invalid-feedback">
-                    <div *ngIf="f.pMobileVerified['errors']['required']">Primary Mobile Number required</div>
-                  </div>
-                </div>
-                <div class="col md-6">
-                    <label>status</label>
-                    <input type="text" [disabled] formControlName="status" class="form-control" value="Active">
-                </div>
-
-                <div class="col md-6">
-                    <label>createdAt</label>
-                    <input type="text" [disabled] formControlName="createdAt" class="form-control" >
-                </div>
-            </div>
 
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary">Close</button>
-              <button type="button" class="btn btn-primary" (click)="onSubmit(userProfileForm.value)">Update Company</button>
+              <button type="button" class="btn btn-primary" (click)="onSubmit(userProfileForm.value)">Update User Profile</button>
             </div>
 
           </form>

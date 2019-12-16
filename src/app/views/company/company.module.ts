@@ -11,6 +11,7 @@ import { UpdateUserProfileComponent } from './update-user-profile.component';
 import { AssignRouteComponent } from './assign-route.component';
 import { UsersResolverService } from './users-resolver.service';
 import { CompanyResolverService } from './company-resolver.service';
+import { InternationalPhoneNumberModule } from 'ngx-international-phone-number';
 
 
 
@@ -24,7 +25,8 @@ import { CompanyResolverService } from './company-resolver.service';
     AssignRouteComponent],
   imports: [
     CompanyRoutingModule,
-    SharedModule
+    SharedModule,
+    InternationalPhoneNumberModule,
   ],
   providers: [UsersResolverService, UserProfileResolverService, CompanyResolverService]
 })

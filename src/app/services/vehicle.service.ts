@@ -30,4 +30,8 @@ export class VehicleService {
   createVehicle(data: Vehicle) {
     return this.http.post<Vehicle>(this.global._BaseUri + '/vehicles/create' , data);
  }
+
+ updateVehicle() {
+
+ }
 }

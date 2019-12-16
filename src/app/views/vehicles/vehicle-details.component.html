@@ -46,10 +46,13 @@
                               </tr>
                               <tr>
                                   <th>Date Created</th>
-                                  <td><span style="font-weight:bold">{{created}}</span></td>
+                                  <td><span style="font-weight:bold">{{created | date}}</span></td>
 
                               </tr>
-
+                              <tr>
+                                  <a class="btn btn-primary btn-sm btn-flat" (click) = "assignDriverDisplay()">ASSIGN DRIVER</a>&nbsp;&nbsp;
+                                  <a class="btn btn-primary btn-sm btn-flat" (click) = "assignRouteDisplay()">ASSIGN ROUTE</a>
+                              </tr>
                           </tbody>
                       </table>
                 </div>
@@ -60,13 +63,6 @@
 
           <!-- Profile Image -->
           <div class="card card-primary card-outline">
-              <div class="card-header">
-                  <div>
-                      <a class="btn btn-primary btn-sm btn-flat" (click) = "assignDriverDisplay()">ASSIGN DRIVER</a>&nbsp;&nbsp;
-                      <a class="btn btn-primary btn-sm btn-flat" (click) = "assignRouteDisplay()">ASSIGN ROUTE</a>
-                  </div>
-
-                </div>
             <div class="card-body box-profile">
               <div class="text-center">
                 <img src="http://placehold.it/380x500"  class="img-fluid" alt="" style="max-height: 250px;" />

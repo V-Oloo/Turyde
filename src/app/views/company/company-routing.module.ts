@@ -1,3 +1,7 @@
+import { CompanyRoutesResolverService } from './company-routes-resolver.service';
+import { SingleRouteResolverService } from './single-route-resolver.service';
+import { RouteResolverService } from './route-resolver.service';
+import { UpdateUserProfileComponent } from './update-user-profile.component';
 import { UserProfileResolverService } from './user-profile-resolver.service';
 import { AssignRouteComponent } from './assign-route.component';
 import { RoutesComponent } from './routes.component';
@@ -48,15 +52,25 @@ const routes: Routes = [
       {
         path: 'routes',
         component: RoutesComponent,
+        resolve: {route: RouteResolverService, companyRoutes: CompanyRoutesResolverService},
         data: {
           title: 'Routes'
         }
       },
       {
-        path: 'add-route',
+        path: 'add-route/:id',
         component: AssignRouteComponent,
+        resolve: {route: SingleRouteResolverService},
         data: {
           title: 'Add Company Route'
+        }
+      },
+      {
+        path: 'update-user/:id',
+        component: UpdateUserProfileComponent,
+        resolve: {user: UserProfileResolverService},
+        data: {
+          title: 'Update User Profile'
         }
       },
     ]

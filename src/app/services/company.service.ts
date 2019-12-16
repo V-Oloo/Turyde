@@ -24,8 +24,12 @@ export class CompanyService {
     return this.http.get<Company>(this.global._BaseUri + '/companies/' + id).pipe(map((data: any) => data.result), shareReplay());
   }
 
-  assignCompanyRoute(id: string, data) {
-    return this.http.post(this.global._BaseUri + '/companies/routes/id/assign', data);
+  assignCompanyRoute(companyId: number, data: any) {
+    return this.http.post(this.global._BaseUri + `/companies/routes/${companyId}/assign`, data);
+  }
+
+  revokeCompanyRoute(companyId: number, routeId: number) {
+    return this.http.post(this.global._BaseUri + `/companies/routes/${companyId}/revoke`, routeId);
   }
 
   getUsers(boundary: string, companyId: number) {
@@ -37,10 +41,20 @@ export class CompanyService {
     return this.http.get(this.global._BaseUri + `/users/${id}`).pipe(map((data: any) => data.result), shareReplay());
   }
 
-  revokeCompanyRoute() {}
+  getRoutes(companyId?) {
+    return this.http.get(this.global._BaseUri + '/routes/list', companyId).pipe(map((data: any) => data.result.data), shareReplay());
+  }
+
+  getRoute(id: number) {
+    return this.http.get(this.global._BaseUri + `/routes/${id}`).pipe(map((data: any) => data.result), shareReplay());
+  }
 
   updateCompany(id: number, companyData: Company) {
-    return this.http.put(this.global._BaseUri + `/companies/${id}` , companyData);
+    return this.http.put(this.global._BaseUri + `/companies/update/${id}` , companyData);
+  }
+
+  updateUser(user: any) {
+    return this.http.put(this.global._BaseUri + `/users/profile-update` , user);
   }
 
 

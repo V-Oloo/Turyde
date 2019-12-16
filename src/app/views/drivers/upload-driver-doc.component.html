@@ -5,16 +5,20 @@
               <div class="card">
                 <div class="card-body">
                     <form [formGroup]="uploadUserDocs">
+                      {{uploadUserDocs.value | json}}
                         <div class="card-header">
-                            <i class="fa fa-align-justify"></i> Add Driver
+                            <i class="fa fa-align-justify"></i> Add Driver Document
                         </div>
                         <div class="modal-body">
                           <div class="row">
                               <div class="col-md-6">
                                   <label>Document Type. *</label>
                                   <div class="form-group">
-                                      <input type="text" class="form-control" formControlName="DocTypeName" placeholder="Document Type">
-                                  </div>
+                                      <input type="text" [ngClass]="{ 'is-invalid': submitted && type.errors }" class="form-control" formControlName="DocTypeName" placeholder="Document Type">
+                                      <div *ngIf="submitted && type.errors" class="invalid-feedback">
+                                        <div *ngIf="type['errors']['required']">required</div>
+                                      </div>
+                                    </div>
                               </div>
                               <div class="col-md-6">
                                   <label for="postal-code">Date Of Issue</label>
@@ -23,7 +27,10 @@
                                     <div class="input-group-prepend">
                                         <button class="fa fa-calendar" type="button"></button>
                                     </div>
-                                    <input class="form-control" formControlName="DateIssued" placeholder="yyyy-mm-dd" bsDatepicker>
+                                    <input class="form-control" [ngClass]="{ 'is-invalid': submitted && issue.errors }" formControlName="DateIssued" placeholder="yyyy-mm-dd" bsDatepicker>
+                                    <div *ngIf="submitted && issue.errors" class="invalid-feedback">
+                                      <div *ngIf="issue['errors']['required']">required</div>
+                                    </div>
                                   </div>
                                </div>
                           </div>
@@ -35,14 +42,20 @@
                                   <div class="input-group-prepend">
                                       <button class="fa fa-calendar" type="button"></button>
                                   </div>
-                                  <input type="text" class="form-control" formControlName="ExpiresOn" placeholder="yyyy-mm-dd" bsDatepicker>
+                                  <input type="text" class="form-control" class="form-control" [ngClass]="{ 'is-invalid': submitted && expires.errors }" formControlName="ExpiresOn" placeholder="yyyy-mm-dd" bsDatepicker>
+                                  <div *ngIf="submitted && expires.errors" class="invalid-feedback">
+                                    <div *ngIf="expires['errors']['required']">required</div>
+                                  </div>
                                 </div>
                              </div>
                              <div class="col-md-6">
                                 <label>Image/Document *</label>
-                                <div class="form-control">
-                                    <input type="file" accept=".pdf, .png, .jpg, .jpeg" (change)="onFileSelected($event)">
-                                </div>
+                                <div>
+                                    <input type="file" class="form-control" [ngClass]="{ 'is-invalid': submitted && images.errors }" accept=".pdf, .png, .jpg, .jpeg" (change)="onFileSelected($event)" required>
+                                    <div *ngIf="submitted && images.errors" class="invalid-feedback">
+                                      <div *ngIf="images['errors']['required']"> required</div>
+                                    </div>
+                                  </div>
                             </div>
                          </div>
 

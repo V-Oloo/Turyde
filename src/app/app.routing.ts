@@ -65,7 +65,7 @@ export const routes: Routes = [
     }
   },
   {
-    path: 'createPassword',
+    path: 'createPassword/:userId/:token',
     component: CreatePasswordComponent,
     data: {
       title: 'Create Password'
@@ -82,11 +82,11 @@ export const routes: Routes = [
     },
     children: [
       {
-        path: 'dashboard',
+        path: 'admin',
         data: {
           boundary: [Boundary.Company]
         },
-        loadChildren: () => import('./views/dashboard/dashboard.module').then(m => m.DashboardModule)
+        loadChildren: () => import('./views/admin/admin.module').then(m => m.AdminModule)
       },
       {
         path: 'company',

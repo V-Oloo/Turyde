@@ -1,3 +1,4 @@
+import { VehicleService } from './../../services/vehicle.service';
 import { Vehicle } from './../../_models/vehicle.model';
 import { Component, OnInit } from '@angular/core';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
@@ -11,7 +12,7 @@ import { VehicleType } from '../../_models/vehicleType.model';
 })
 export class UpdateVehicleComponent implements OnInit {
   addVehicleForm: FormGroup;
-  constructor(private fb: FormBuilder, private route: ActivatedRoute) { }
+  constructor(private fb: FormBuilder, private route: ActivatedRoute, private _service: VehicleService) { }
 
    public option: {};
 
@@ -37,7 +38,9 @@ export class UpdateVehicleComponent implements OnInit {
     });
   }
 
-  updateCompany(data) {}
+  onSubmit(data) {
+    this
+  }
 
   editVehicle (data: Vehicle) {
     this.addVehicleForm.patchValue({

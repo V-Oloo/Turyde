@@ -1,6 +1,7 @@
+import { CompanyService } from './../../services/company.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { AuthService } from './../../services/auth.service';
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-update-user-profile',
@@ -9,27 +10,51 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UpdateUserProfileComponent implements OnInit {
 
-  constructor(private service: AuthService, private fb: FormBuilder) { }
+  constructor(private service: CompanyService, private fb: FormBuilder, private _route: ActivatedRoute, ) { }
+  id = this._route.snapshot.paramMap.get('id');
 
   userProfileForm: FormGroup;
   submitted = false;
 
   ngOnInit() {
     this.userProfileForm = this.fb.group({
-        id:	['', []],
+        id: [],
         avator: ['', []],
-        avatorUrl: ['', []],
-        mimeType: ['', []],
         firstName: ['', []],
         lastName: ['', []],
         phoneNumber: ['', []],
         email: ['', []],
-        fullName: ['', []],
-        phoneNumberVerified:	['', []],
-        emailVerified: ['', []],
-        companyId: ['', []],
-        roles: ['', []],
-        boundary: ['', []],
+        roles: [[''], []],
+    });
+    this._route.data.subscribe((data: { user: any }) => {
+         console.log(data.user);
+         this.editUser(data.user);
+      });
+  }
+
+  onSubmit(data) {
+    this.submitted = true;
+     this.service.updateUser(data)
+        .subscribe();
+   }
+
+  onFileSelected(fileInput: any) {
+    const file = <File>fileInput.target.files[0];
+    this.userProfileForm.patchValue({
+      avator: file
+    });
+    this.userProfileForm.get('image').updateValueAndValidity();
+  }
+
+  editUser(data: any) {
+    this.userProfileForm.patchValue({
+     id: this.id,
+     avator: data.avator,
+     firstName: data.firstName,
+     lastName: data.lastName,
+     phoneNumber: data.phoneNumber,
+     email: data.email,
+     roles: data.roles
     });
   }
 

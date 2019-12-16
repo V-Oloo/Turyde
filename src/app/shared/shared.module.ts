@@ -11,6 +11,7 @@ import { ButtonsModule } from 'ngx-bootstrap/buttons';
 import { AlertModule } from 'ngx-bootstrap/alert';
 import { NgxSelectModule } from 'ngx-select-ex';
 import { NgxSpinnerModule } from 'ngx-spinner';
+import { TooltipModule } from 'ngx-bootstrap/tooltip';
 // import {Grid} from '@ag-grid-community/all-modules';
 
 
@@ -29,7 +30,8 @@ import { NgxSpinnerModule } from 'ngx-spinner';
     NgxSelectModule,
     BsDropdownModule.forRoot(),
     AlertModule.forRoot(),
-    NgxSpinnerModule
+    NgxSpinnerModule,
+    TooltipModule.forRoot()
     // Grid
   ],
   exports: [
@@ -45,7 +47,8 @@ import { NgxSpinnerModule } from 'ngx-spinner';
     ButtonsModule,
     BsDropdownModule,
     AlertModule,
-    NgxSpinnerModule
+    NgxSpinnerModule,
+    TooltipModule
     // Grid
   ]
 })

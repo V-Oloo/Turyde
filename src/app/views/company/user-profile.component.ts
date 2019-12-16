@@ -15,7 +15,7 @@ export class UserProfileComponent implements OnInit {
 
   userObj;
   name; email; phone; roles;
-  userId: string;
+  userId;
 
   ngOnInit(): void {
     this.dtOptions = {
@@ -27,6 +27,7 @@ export class UserProfileComponent implements OnInit {
       this.email = this.userObj.email;
       this.phone = this.userObj.phoneNumber;
       this.roles = this.userObj.roles;
+      this.userId = this.userObj.id;
       });
   }
 

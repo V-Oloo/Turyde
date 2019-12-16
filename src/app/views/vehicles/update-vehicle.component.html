@@ -4,7 +4,7 @@
           <div class="col-md-12">
             <div class="card">
               <div class="card-body">
-                <form [formGroup]="addVehicleForm">
+                <form [formGroup]="addVehicleForm" (ngOnSumit)="onSubmit(addVehicleForm.value)">
                   <div class="card-header">
                     <i class="fa fa-align-justify"></i> Update Vehicle
                  </div>

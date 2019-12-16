@@ -24,19 +24,7 @@
 
       </div>
       <!-- /.col -->
-      <div class="col-md-9">
-          <div class="callout callout-info">
-              <div class="row">
-                  <div class="col-md-4">
-                      <p><label>Status</label>&nbsp;:&nbsp;&nbsp;<label>Active</label></p>
-                  </div>
-                  <div class="col-md-4">
-                      <p><label>Verhicle</label>&nbsp;:&nbsp;&nbsp;<label>KBJ 456Y</label></p>
-                  </div>
-
-              </div>
-
-            </div>
+      <div class="col-md-6">
             <table id="ticketDetailsTable" class="table table-no-margin" style="font-size:12px">
                 <tbody>
                     <tr>
@@ -62,6 +50,39 @@
                 </tbody>
             </table>
       </div>
+      <div class="col-md-3">
+        <div class="card text-white bg-primary  card-outline">
+          <div class="card-header">
+            Driver Statistics
+          </div>
+          <div class="card-body box-profile">
+            <table id="ticketDetailsTable" class="table table-no-margin" style="font-size:12px">
+              <tbody>
+                  <tr>
+                      <th>Trips</th>
+                      <td><span style="font-weight:bold; color: white;">200</span></td>
+                  </tr>
+                  <tr>
+                      <th>Revenue</th>
+                      <td><span style="font-weight:bold; color: white;">Ksh: 20000</span></td>
+
+                  </tr>
+                  <tr>
+                      <th>Incidents</th>
+                      <td><span style="font-weight:bold; color: white;">None</span></td>
+
+                  </tr>
+                  <tr>
+                      <th>Rating</th>
+                      <td><span style="font-weight:bold; color: white;">4.2</span></td>
+
+                  </tr>
+
+              </tbody>
+          </table>
+          </div>
+        </div>
+      </div>
 
     </div>
     <!-- /.row -->
@@ -75,7 +96,7 @@
                               <div class="card">
                                 <div class="card-header">
                                   <i class="fa fa-align-justify"></i> Driver Documents
-                                  <button type="button" class="btn btn-pill btn-success pull-right " routerLink="/drivers/driver-docs-upload/{{userId}}"><i class="fa fa-plus"></i>&nbsp;Add driver Document</button>
+                                  <button type="button" class="btn btn-pill btn-success pull-right" routerLink="/drivers/driver-docs/{{userId}}"><i class="fa fa-plus"></i>&nbsp;Add driver Document</button>
                                 </div>
                                 <div class="card-body">
 

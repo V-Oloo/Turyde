@@ -2,52 +2,80 @@ import { INavData } from '@coreui/angular';
 
 export const navItems: INavData[] = [
   {
-    name: 'Dashboard',
-    url: '/dashboard',
-    icon: 'icon-speedometer'
+    title: true,
+    name: 'TURYDE ADMIN'
   },
-
   {
-    name: 'Company',
-    url: '/company',
-    icon: 'icon-puzzle',
-    children: [
-      {
-        name: 'Dashboard',
-        url: '/company/home',
-        icon: 'icon-speedometer'
-      },
-      {
-        name: 'Routes',
-        url: '/company/routes',
-        icon: 'icon-puzzle',
-      },
-    ]
+    name: 'Admin Dashboard',
+    url: '/admin',
+    icon: 'fa fa-tasks'
+  },
+  {
+      title: true,
+      name: 'COMPANY'
+  },
+  {
+    name: 'Dashboard',
+    url: '/company/home',
+    icon: 'fa fa-tasks'
+  },
+  {
+    name: 'Routes',
+    url: '/company/routes',
+    icon: 'fa fa-map-marker',
   },
   {
     name: 'Drivers',
     url: '/drivers',
-    icon: 'icon-puzzle',
-    children: [
-      {
-        name: 'Drivers',
-        url: '/drivers',
-        icon: 'icon-speedometer'
-      },
-    ]
+    icon: 'icon-speedometer'
   },
   {
     name: 'Vehicles',
     url: '/vehicles',
-    icon: 'icon-puzzle',
-    children: [
-      {
-        name: 'Vehicles',
-        url: '/vehicles',
-        icon: 'icon-speedometer'
-      },
-    ]
+    icon: 'fa fa-bus'
   },
+
+  // {
+  //   name: 'Company',
+  //   url: '/company',
+  //   icon: 'icon-puzzle',
+  //   children: [
+  //     {
+  //       name: 'Dashboard',
+  //       url: '/company/home',
+  //       icon: 'icon-speedometer'
+  //     },
+  //     {
+  //       name: 'Routes',
+  //       url: '/company/routes',
+  //       icon: 'icon-puzzle',
+  //     },
+  //   ]
+  // },
+  // {
+  //   name: 'Drivers',
+  //   url: '/drivers',
+  //   icon: 'icon-puzzle',
+  //   children: [
+  //     {
+  //       name: 'Drivers',
+  //       url: '/drivers',
+  //       icon: 'icon-speedometer'
+  //     },
+  //   ]
+  // },
+  // {
+  //   name: 'Vehicles',
+  //   url: '/vehicles',
+  //   icon: 'icon-puzzle',
+  //   children: [
+  //     {
+  //       name: 'Vehicles',
+  //       url: '/vehicles',
+  //       icon: 'icon-speedometer'
+  //     },
+  //   ]
+  // },
   // {
   //   title: true,
   //   name: 'Components'

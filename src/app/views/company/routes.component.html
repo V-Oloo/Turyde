@@ -1,54 +1,96 @@
 <div class="animated fadeIn">
-  <div class="row">
-      <div class="col-lg-12">
-        <div class="card">
-          <div class="card-header">
+  <div class="animated fadeIn">
+    <div class="row">
+        <div class="col-md-12">
+          <tabset>
+              <tab heading="Our Routes">
+                  <div class="card">
+                      <div class="card-header">
+                        <i class="fa fa-align-justify"></i> Driver Documents
+                      </div>
+                      <div class="card-body">
 
-            <div class="col-6 col-sm-4 col-md mb-3 mb-xl-0 ">
-                <i class="fa fa-align-justify"></i> List of Company Routes
-                <a routerLink="/company/add-route" class="btn btn-pill btn-success pull-right "><i class="fa fa-plus"></i>&nbsp;Add Route</a>
-            </div>
+                          <table datatable [dtOptions]="dtOptions"  class="table table-bordered row-border hove" style="width:100%">
+                              <thead class="text-center">
+                                  <tr>
+                                      <th>Name</th>
+                                      <th>Route Type</th>
+                                      <th>Distance in KM</th>
+                                      <th>Default Peak Rate</th>
+                                      <th>Default offPeak Rate</th>
+                                      <th>Status</th>
+                                      <th>Action</th>
+                                  </tr>
+                              </thead>
+                              <tbody>
+                                <tr class="text-center" *ngFor="let item of companyRoutes">
+                                  <td>{{item.name}}</td>
+                                  <td>{{item.routeType}}</td>
+                                  <td>{{item.distanceKm}}</td>
+                                  <td>{{item.defaultPeakRate}}</td>
+                                  <td>{{item.defaultOffPeakRate}}</td>
+                                  <td>{{item.status}}</td>
+                                  <td>
+                                    <div class="btn-group mt-2" role="group">
+                                        <button type="button" class="btn btn-primary" routerLink="/company/add-route/{{item.id}}"><i class="fa fa-edit"></i></button>
+                                        <button type="button" class="btn btn-danger" tooltip="Revoke Route." placement="bottom" (click)="revokeRoute(item.id)"><i class="fa fa-trash"></i></button>
+                                      </div>
+                                  </td>
+                              </tr>
 
-          </div>
-          <div class="card-body">
+                              </tbody>
 
-              <table datatable [dtOptions]="dtOptions"  class="table table-bordered row-border hove" style="width:100%">
-                  <thead class="text-center">
-                      <tr>
-                          <th>Name</th>
-                          <th>Position</th>
-                          <th>Office</th>
-                          <th>Age</th>
-                          <th>Start date</th>
-                          <th>Salary</th>
-                          <th>Action</th>
-                      </tr>
-                  </thead>
-                  <tbody>
+                          </table>
 
-                      <tr class="text-center">
-                          <td>oloo</td>
-                          <td>SR</td>
-                          <td>Mine</td>
-                          <td>24</td>
-                          <td>1200</td>
-                          <td>1200</td>
-                          <td>
-                            <div class="btn-group mt-2" role="group">
-                                <!-- <button type="button" class="btn btn-success" [routerLink]="['/vehicles/vehicle-details']"><i class="fa fa-list"></i></button>
-                                <button type="button" class="btn btn-primary" [routerLink]="['/vehicles/update-vehicle']"><i class="fa fa-edit"></i></button> -->
-                                <button type="button" class="btn btn-danger"><i class="fa fa-trash"></i></button>
-                              </div>
-                          </td>
-                      </tr>
+                      </div>
+                    </div>
+              </tab>
+              <tab heading="Available Routes">
+                <div class="card">
+                    <div class="card-header">
+                      <i class="fa fa-align-justify"></i> Driver Documents
+                    </div>
+                    <div class="card-body">
 
-                  </tbody>
+                        <table datatable [dtOptions]="dtOptions"  class="table table-bordered row-border hove" style="width:100%">
+                            <thead class="text-center">
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Route Type</th>
+                                    <th>Distance in KM</th>
+                                    <th>Default Peak Rate</th>
+                                    <th>Default offPeak Rate</th>
+                                    <th>Status</th>
+                                    <th>Assign Route</th>
+                                </tr>
+                            </thead>
+                            <tbody>
 
-              </table>
+                                <tr class="text-center" *ngFor="let item of routes">
+                                    <td>{{item.name}}</td>
+                                    <td>{{item.routeType}}</td>
+                                    <td>{{item.distanceKm}}</td>
+                                    <td>{{item.defaultPeakRate}}</td>
+                                    <td>{{item.defaultOffPeakRate}}</td>
+                                    <td>{{item.status}}</td>
+                                    <td>
+                                      <div class="btn-group mt-2" role="group">
+                                          <button type="button" class="btn btn-primary" routerLink="/company/add-route/{{item.id}}"><i class="fa fa-sign-in"></i></button>
+                                        </div>
+                                    </td>
+                                </tr>
 
-          </div>
+                            </tbody>
+
+                        </table>
+
+                    </div>
+                  </div>
+            </tab>
+          </tabset>
         </div>
-      </div>
+
     </div>
+  </div>
 
 </div>

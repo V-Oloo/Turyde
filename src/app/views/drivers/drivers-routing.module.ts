@@ -32,7 +32,7 @@ const routes: Routes = [
         }
       },
       {
-        path: 'driver-docs-upload/:id',
+        path: 'driver-docs/:id',
         component: UploadDriverDocComponent,
         data: {
           title: 'Add Driver Document'

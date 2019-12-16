@@ -12,6 +12,8 @@ import { DriverService } from '../../services/driver.service';
 export class UploadDriverDocComponent implements OnInit {
   public option: {};
   image: any;
+  userId: string;
+  submitted = false;
 
   uploadUserDocs: FormGroup;
   constructor(
@@ -20,6 +22,23 @@ export class UploadDriverDocComponent implements OnInit {
     private toastr: ToastrService,
     private route: ActivatedRoute
     ) { }
+
+    get type() {
+      return this.uploadUserDocs.get('DocTypeName');
+    }
+
+    get issue() {
+      return this.uploadUserDocs.get('DateIssued');
+    }
+
+    get expires() {
+      return this.uploadUserDocs.get('ExpiresOn');
+    }
+
+    get images() {
+      return this.uploadUserDocs.get('image');
+    }
+
 
   ngOnInit() {
     // vehicle form starts here
@@ -40,8 +59,13 @@ export class UploadDriverDocComponent implements OnInit {
   }
 
   onSubmit() {
-    const UserId = this.route.snapshot.paramMap.get('userId');
-     this._service.uploadDriverDocs(UserId, this.uploadUserDocs.value).subscribe(res => {
+    this.submitted = true;
+    this.userId = this.route.snapshot.paramMap.get('id');
+    console.log(this.userId);
+    if (this.uploadUserDocs.invalid) {
+      return;
+    }
+     this._service.uploadDriverDocs(this.userId, this.uploadUserDocs.value).subscribe(res => {
                console.log(res);
                 this.uploadUserDocs.reset();
                 this.toastr.success('Document uploaded successfully!', 'Document Added');

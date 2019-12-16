@@ -2,7 +2,7 @@ import { AuthService } from './../../services/auth.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MustMatch } from '../../shared/password.validator';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-create-password',
@@ -14,12 +14,14 @@ export class CreatePasswordComponent implements OnInit {
   passwordCreationForm: FormGroup;
   submitted = false;
   errMessage: string;
+  successMessage: string;
+  urlParams: any = {};
 
-  constructor(private fb: FormBuilder, private service: AuthService, private _router: Router) { }
-
-  get token() {
-    return this.passwordCreationForm.get('token');
-  }
+  constructor(
+    private fb: FormBuilder,
+    private service: AuthService,
+    private _router: Router,
+    private route: ActivatedRoute) { }
 
   get password() {
     return this.passwordCreationForm.get('password');
@@ -30,11 +32,14 @@ export class CreatePasswordComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.urlParams.token = this.route.snapshot.queryParamMap.get('token');
+    this.urlParams.userId = this.route.snapshot.queryParamMap.get('userId');
+    this.successMessage = 'Email confirmation successfull, Please set up your password';
     this.passwordCreationForm = this.fb.group({
-      token: ['', [Validators.required]],
+      token: [this.urlParams.token],
       password: ['', [Validators.required, Validators.minLength(6)]],
       confirmPass: ['', [Validators.required]],
-      userId: ['2d83bb18-bc4d-4a54-9334-5e2d1b024082'],
+      userId: [this.urlParams.userId],
     }, { validator: MustMatch('password', 'confirmPass')});
   }
 
