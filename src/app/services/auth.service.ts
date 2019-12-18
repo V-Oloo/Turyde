@@ -16,18 +16,34 @@ export class AuthService {
 
   private readonly JWT_TOKEN = 'token';
 
+  // userContext
   private currentUserSubject: BehaviorSubject<any>;
   public currentUser: Observable<any>;
+
+  // user information
+  private userSubject: BehaviorSubject<any>;
+  public user: Observable<any>;
+
   helper = new JwtHelperService();
 
   constructor(private http: HttpClient, private global: Globals) {
-    this.currentUserSubject = new BehaviorSubject<any>(JSON.parse(localStorage.getItem('currentUser')));
+    this.currentUserSubject = new BehaviorSubject<any>(JSON.parse(localStorage.getItem('userContext')));
     this.currentUser = this.currentUserSubject.asObservable();
+
+    this.userSubject = new BehaviorSubject<any>(JSON.parse(localStorage.getItem('currentUser')));
+    this.user = this.userSubject.asObservable();
   }
 
   public get currentUserValue(): any {
       return this.currentUserSubject.value;
   }
+  public get currentUserSub(): any {
+    return this.currentUserSubject;
+}
+
+  public get userValue(): any {
+    return this.userSubject.value;
+}
 
   isLoggedIn(): boolean {
     return !!this.getJwtToken();
@@ -46,11 +62,14 @@ export class AuthService {
     return this.http.post<any>(this.global._BaseUri + '/users/login', user)
            .pipe(map(res => {
               if (res && res.result.token) {
+                const userContext = {'companyId': res.result.me.companyId, 'boundary': res.result.me.boundary };
                 const expiresAt = moment().add(res.result.expires, 'second');
                 localStorage.setItem('JWT_TOKEN', res.result.token);
                 localStorage.setItem('expires_at', JSON.stringify(expiresAt.valueOf()) );
                 localStorage.setItem('currentUser', JSON.stringify(res.result.me));
-                this.currentUserSubject.next(res.result.me);
+                localStorage.setItem('userContext', JSON.stringify(userContext));
+                this.currentUserSubject.next(userContext);
+                this.userSubject.next(res.result.me);
               }
               return res;
             }),

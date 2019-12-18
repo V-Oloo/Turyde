@@ -1,3 +1,4 @@
+import { ActivatedRoute } from '@angular/router';
 import { DriverService } from './../../services/driver.service';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subject } from 'rxjs';
@@ -8,7 +9,7 @@ import { AuthService } from '../../services/auth.service';
   templateUrl: './drivers.component.html',
   styleUrls: []
 })
-export class DriversComponent implements OnInit, OnDestroy {
+export class DriversComponent implements OnInit {
   dtOptions: DataTables.Settings = {};
 
   currentUser = this.auth.currentUserValue;
@@ -18,23 +19,21 @@ export class DriversComponent implements OnInit, OnDestroy {
   dtTrigger: Subject<any> = new Subject();
 
   public status = 'suspended';
-  constructor(private _service: DriverService, private auth: AuthService) {}
+  constructor(
+    private auth: AuthService,
+    private route: ActivatedRoute
+    ) {}
 
   ngOnInit(): void {
 
     this.dtOptions = {
       pagingType: 'full_numbers'
     };
-    this._service.getDrivers(this.companyId).subscribe(drivers => {
-      this.drivers = drivers;
-      this.dtTrigger.next();
+    this.route.data.subscribe((data: {drivers: any}) => {
+      this.drivers = data.drivers;
     });
 
 
   }
 
-  ngOnDestroy(): void {
-    // Do not forget to unsubscribe the event
-    this.dtTrigger.unsubscribe();
-  }
 }

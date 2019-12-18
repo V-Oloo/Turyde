@@ -1,0 +1,78 @@
+<div class="container-fluid">
+  <div class="row" >
+    <div class="col-md-6">
+
+      <!-- Profile Image -->
+      <div class="card card-primary card-outline">
+        <div class="card-body box-profile">
+          <form [formGroup]="routeForm">
+            <div *ngIf="errMessage">{{errMessage}}</div>
+            <!-- {{routeForm.value | json}} -->
+            <div class="login-form-header text-center">
+              <div class="login-header">
+                  <h4 class="bold color-white">Update Route Price</h4>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                  <label>Route Name</label>
+                  <div class="form-group">
+                      <input type="text" class="form-control" formControlName="name" id="city">
+                  </div>
+              </div>
+              <div class="col-md-6">
+                  <label>Distance in KM</label>
+                  <div class="form-group">
+                      <input type="text" class="form-control" formControlName="distanceKm">
+                  </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                  <label>Default Peak Rate *</label>
+                  <div class="form-group">
+                      <input type="text" class="form-control" formControlName="peakRate" placeholder="Peak Rate">
+                  </div>
+              </div>
+              <div class="col-md-6">
+                  <label>Default OffPeak Rate *</label>
+                  <div class="form-group">
+                      <input type="text" class="form-control" formControlName="offPeakRate" placeholder="offPeak Rate">
+                  </div>
+              </div>
+            </div>
+            <fieldset>
+              <legend>Update Price:</legend>
+              <label>Peak</label>: <input type="text" class="form-control" formControlName="peak" placeholder="Peak Rate">
+              <label>off Peak</label>: <input type="text" class="form-control" formControlName="offPeak" placeholder="offPeak Rate">
+              <div class="modal-footer">
+                <button type="submit" (click)="onSubmit(routeForm.value)" class="btn btn-primary">update price</button>
+              </div>
+             </fieldset>
+
+          </form>
+        </div>
+        <!-- /.card-body -->
+      </div>
+      <!-- /.card -->
+
+    </div>
+    <!-- /.col -->
+    <div class="col-md-6">
+      <div class="card card-primary card-outline">
+        <div class="card-body box-profile">
+          <div class="box box-primary">
+            <div class="box-header with-border"></div>
+            <!-- /.box-header -->
+            <div class="box-body">
+                 <img src="https://maps.googleapis.com/maps/api/staticmap?{{params}}&zoom=13&size=600x450&maptype=roadmap&markers=color:blue&key={{API_KEY}}" alt="Map">
+                <!-- <iframe class="map col-md-12" src="https://maps.googleapis.com/maps/api/staticmap?{{params}}&zoom=13&size=600x450&maptype=roadmap&markers=color:blue&key={{apiKey}}" height="450" frameborder="0" style="border:0" allowfullscreen></iframe> -->
+            </div>
+        </div>
+        </div>
+        <!-- /.card-body -->
+      </div>
+      <!-- /.card -->
+     </div>
+  </div>
+</div>

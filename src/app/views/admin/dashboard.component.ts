@@ -1,33 +1,23 @@
 import { AuthService } from './../../services/auth.service';
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { ModalDirective } from 'ngx-bootstrap/modal';
-import { CompanyService } from '../../services/company.service';
+import { Component, OnInit} from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   templateUrl: 'dashboard.component.html'
 })
 export class DashboardComponent implements OnInit {
-  @ViewChild('myModal') public myModal: ModalDirective;
   dtOptions: DataTables.Settings = {};
-  company: {};
 
-  constructor(private auth: AuthService, private _companyService: CompanyService) {}
-
-  currentUser = this.auth.currentUserValue;
-  companyId: number = this.currentUser.companyId;
+  constructor(private auth: AuthService, private route: ActivatedRoute, private router: Router) {}
 
   ngOnInit(): void {
-    // this.getCompany();
     this.dtOptions = {
       pagingType: 'full_numbers'
     };
+  //  this.route.data.subscribe((data: {companyList: Company}) => {
+  //     this.companies = data.companyList;
+  //  });
   }
-
-  getCompany() {
-    // console.log('this is the id' + this.companyId);
-    this._companyService.getCompany(this.companyId).subscribe(data => this.company = data);
-  }
-
 
 }
 

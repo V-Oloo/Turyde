@@ -31,7 +31,7 @@ export const routes: Routes = [
   {
     path: 'login',
     component: LoginComponent,
-    canActivate: [AuthGuard],
+    // canActivate: [AuthGuard],
     data: {
       title: 'Login Page'
     }
@@ -74,17 +74,17 @@ export const routes: Routes = [
   {
     path: '',
     component: DefaultLayoutComponent,
-    canActivate: [MainAuthGuard],
-    // canActivateChild: [MainAuthGuard],
-    canLoad: [MainAuthGuard],
+    canActivate: [AuthGuard],
+    // canLoad: [AuthGuard],
     data: {
       title: 'Home'
     },
     children: [
       {
         path: 'admin',
+        canActivate: [AuthGuard],
         data: {
-          boundary: [Boundary.Company]
+          boundary: [Boundary.Turyde]
         },
         loadChildren: () => import('./views/admin/admin.module').then(m => m.AdminModule)
       },

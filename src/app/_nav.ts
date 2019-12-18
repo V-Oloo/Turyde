@@ -2,15 +2,6 @@ import { INavData } from '@coreui/angular';
 
 export const navItems: INavData[] = [
   {
-    title: true,
-    name: 'TURYDE ADMIN'
-  },
-  {
-    name: 'Admin Dashboard',
-    url: '/admin',
-    icon: 'fa fa-tasks'
-  },
-  {
       title: true,
       name: 'COMPANY'
   },

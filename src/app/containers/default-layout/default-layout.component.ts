@@ -1,6 +1,7 @@
 import { Company } from '../../_models/company.model';
 import { Component, OnInit } from '@angular/core';
 import { navItems } from '../../_nav';
+import { adminNavItems } from '../../_admin-nav';
 import { AuthService } from '../../services/auth.service';
 import { Event, NavigationStart, NavigationEnd, Router } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
@@ -12,6 +13,7 @@ import { NgxSpinnerService } from 'ngx-spinner';
 export class DefaultLayoutComponent implements OnInit {
   public sidebarMinimized = false;
   public navItems = navItems;
+  public adminNav = adminNavItems;
   company: Company;
 
   showLoadingIndicator = true;
@@ -30,18 +32,14 @@ export class DefaultLayoutComponent implements OnInit {
     } );
   }
 
-  currentUser = this.auth.currentUserValue;
-  companyId: number = this.currentUser.companyId;
-  user: string = this.currentUser.roles;
+  loggedUser = this.auth.userValue;
+  boundary: string = this.loggedUser.boundary;
+  fullname: string = this.loggedUser.fullName;
 
 
   ngOnInit(): void {
     // this.getCompany();
   }
-
-  // getCompany() {
-  //   this._companyService.getCompany(this.companyId).subscribe((data: Company) => this.company = data);
-  // }
 
   toggleMinimize(e) {
     this.sidebarMinimized = e;

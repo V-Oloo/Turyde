@@ -21,17 +21,18 @@ export class LoginComponent implements OnInit {
     ngOnInit() {}
 
     loginUser() {
-      console.log(this.loginForm);
       this._service.loginUser(this.loginForm).subscribe(
         (res: any) => {
-          if (res) {
-            this._router.navigateByUrl('/dashboard');
+          const boundary = res.result.me.boundary;
+          if (boundary === 'TURYDE') {
+            this._router.navigateByUrl('/admin');
           }
-
+          if (boundary === 'COMPANY') {
+            this._router.navigateByUrl('/company');
+          }
         },
         (err: any) => {
           this.errMessage = err.error.message;
-          console.log(err);
         }
       );
     }

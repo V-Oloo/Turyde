@@ -1,0 +1,49 @@
+<div class="animated fadeIn">
+  <div class="animated fadeIn">
+    <div class="row">
+        <div class="col-md-12">
+          <div class="card">
+              <div class="card-header">
+                <i class="fa fa-align-justify"></i> Driver Documents
+              </div>
+              <div class="card-body">
+
+                  <table datatable [dtOptions]="dtOptions"  class="table table-bordered row-border hove" style="width:100%">
+                      <thead class="text-center">
+                          <tr>
+                              <th>Name</th>
+                              <th>Route Type</th>
+                              <th>Distance in KM</th>
+                              <th>Default Peak Rate</th>
+                              <th>Default offPeak Rate</th>
+                              <th>Status</th>
+                              <th>Assign Route</th>
+                          </tr>
+                      </thead>
+                      <tbody>
+
+                          <tr class="text-center" *ngFor="let item of routes">
+                              <td>{{item.name}}</td>
+                              <td>{{item.routeType}}</td>
+                              <td>{{item.distanceKm}}</td>
+                              <td>{{item.defaultPeakRate}}</td>
+                              <td>{{item.defaultOffPeakRate}}</td>
+                              <td>{{item.status}}</td>
+                              <td>
+                                <div class="btn-group mt-2" role="group">
+                                    <button type="button" class="btn btn-primary" routerLink="/admin/edit-route/{{item.id}}"><i class="fa fa-pencil"></i></button>
+                                  </div>
+                              </td>
+                          </tr>
+
+                      </tbody>
+
+                  </table>
+
+              </div>
+          </div>
+        </div>
+    </div>
+  </div>
+</div>
+

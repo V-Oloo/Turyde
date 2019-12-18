@@ -12,6 +12,7 @@ import { Vehicle } from '../../_models/vehicle.model';
 export class VehicleDetailsComponent implements OnInit {
 
   public option;
+  dtOptions: DataTables.Settings = {};
 
   vehicleObj: any;
   reg; mileage; status; seats; created; manfYear; vehicleId;
@@ -23,6 +24,9 @@ export class VehicleDetailsComponent implements OnInit {
 
 
   ngOnInit() {
+    this.dtOptions = {
+      pagingType: 'full_numbers'
+    };
     this.route.data.subscribe((data: {singleVehicle: Vehicle}) => {
       this.vehicleObj = data.singleVehicle;
       this.status = this.vehicleObj.status;

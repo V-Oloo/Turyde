@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { DriversComponent } from './drivers.component';
 import { AddDriverComponent } from './add-driver.component';
+import { DriverResolverService } from './driver-resolver.service';
 
 
 
@@ -20,6 +21,7 @@ const routes: Routes = [
       {
         path: 'drivers',
         component: DriversComponent,
+        resolve: {drivers: DriverResolverService},
         data: {
           title: 'drivers'
         }

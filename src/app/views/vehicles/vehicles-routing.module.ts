@@ -53,7 +53,7 @@ const routes: Routes = [
         }
       },
       {
-        path: 'vehicleDocs',
+        path: 'vehicleDocs/:id',
         component: VehicleDocsComponent,
         resolve: {},
         data: {

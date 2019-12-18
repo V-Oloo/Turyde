@@ -16,7 +16,7 @@
     <li class="nav-item dropdown" dropdown placement="bottom right">
       <a class="nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false" dropdownToggle (click)="false">
         <span  [style.color]="'white'">
-           {{user}}
+           {{fullname}}
         </span> <img src="assets/img/avatars/6.jpg" class="img-avatar" alt="admin@bootstrapmaster.com"/>
       </a>
       <div class="dropdown-menu dropdown-menu-right" *dropdownMenu aria-labelledby="simple-dropdown">
@@ -31,9 +31,16 @@
   </ul>
 </app-header>
 <div class="app-body">
+
   <app-sidebar [fixed]="true" [display]="'lg'">
-    <app-sidebar-nav [navItems]="navItems" [perfectScrollbar] [disabled]="sidebarMinimized"></app-sidebar-nav>
-    <app-sidebar-minimizer></app-sidebar-minimizer>
+    <div *ngIf="boundary === 'TURYDE'; else company">
+      <app-sidebar-nav [navItems]="adminNav" [perfectScrollbar] [disabled]="sidebarMinimized"></app-sidebar-nav>
+      <app-sidebar-minimizer></app-sidebar-minimizer>
+    </div>
+    <ng-template #company>
+      <app-sidebar-nav [navItems]="navItems" [perfectScrollbar] [disabled]="sidebarMinimized"></app-sidebar-nav>
+      <app-sidebar-minimizer></app-sidebar-minimizer>
+    </ng-template>
   </app-sidebar>
   <!-- Main content -->
   <main class="main">
