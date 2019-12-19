@@ -1,3 +1,4 @@
+import { AuthService } from './../../services/auth.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 
@@ -12,8 +13,13 @@ export class CompanyDashboardComponent implements OnInit {
   users: {};
   company;
   companyName;
+  boundary;
 
-  constructor(private _route: ActivatedRoute, private router: Router) {}
+  constructor(private _route: ActivatedRoute, private router: Router, private auth: AuthService) {}
+
+  currentUser = this.auth.userValue;
+  boundry = this.currentUser.boundary;
+
   returnUrl = this.router.url;
   ngOnInit() {
 
@@ -30,7 +36,7 @@ export class CompanyDashboardComponent implements OnInit {
         this.company = data.company;
         this.companyName = this.company.shortName;
     });
-
+    console.log(this.boundry);
   }
 
 }

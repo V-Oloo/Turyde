@@ -94,6 +94,10 @@ getUser(id: string) {
             );
   }
 
+  changePassword(data: any) {
+     return this.http.post<any>(this.global._BaseUri + '/users/change-password', data);
+  }
+
   logout() {
     localStorage.removeItem(this.JWT_TOKEN);
     localStorage.removeItem('expires_at');

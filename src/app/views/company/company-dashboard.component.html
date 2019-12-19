@@ -103,7 +103,7 @@
           <div class="card">
             <div class="card-header">
               <i class="fa fa-align-justify"></i> Users Table
-              <button type="button" class="btn btn-pill btn-success pull-right " [routerLink]="['/user/addUser']" [queryParams]="{returnUrl: returnUrl}"><i class="fa fa-plus"></i>&nbsp;Add user</button>
+              <button type="button" class="btn btn-pill btn-success pull-right" *ngIf="boundry == 'COMPANY'"  [routerLink]="['/user/addUser']" [queryParams]="{returnUrl: returnUrl}"><i class="fa fa-plus"></i>&nbsp;Add user</button>
             </div>
             <div class="card-body">
 
@@ -115,7 +115,7 @@
                             <th>Phone Number</th>
                             <th>Role</th>
 
-                            <th>Action</th>
+                            <th  *ngIf="boundry == 'COMPANY'">Action</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -126,9 +126,9 @@
                             <td>{{item.phoneNumber}}</td>
                             <td>{{item.roles}}</td>
 
-                            <td>
+                            <td  *ngIf="boundry == 'COMPANY'" >
                               <div class="btn-group mt-2" role="group">
-                                  <button type="button" class="btn btn-success" routerLink="/user/user-profile/{{item.id}}"><i class="fa fa-list"></i></button>
+                                  <button type="button"  class="btn btn-success" routerLink="/user/user-profile/{{item.id}}"><i class="fa fa-list"></i></button>
                                   <button type="button" class="btn btn-primary" routerLink="/user/update-user/{{item.id}}"><i class="fa fa-edit"></i></button>
                                   <button type="button" class="btn btn-danger"><i class="fa fa-trash"></i></button>
                                 </div>
