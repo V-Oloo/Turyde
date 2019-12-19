@@ -36,7 +36,10 @@
                   </div>
                   <div class="row">
                     <div class="col-6">
-                      <button type="submit" [disabled]="form.invalid" class="btn btn-primary px-6">Login</button>
+                      <button type="submit" [disabled]="form.invalid || loading" class="btn btn-primary px-6">
+                        <span class="spinner-border spinner-border-sm" *ngIf="loading"></span>
+                        Login
+                      </button>
                     </div>
                     <div class="col-6 text-right">
                       <button type="button" class="btn btn-link px-0">Forgot password?</button>

@@ -1,3 +1,4 @@
+import { AuthService } from './../../services/auth.service';
 import { CompanyService } from './../../services/company.service';
 import { Observable } from 'rxjs';
 import { UserProfile } from './../../_models/userProfile.model';
@@ -9,10 +10,10 @@ import { Injectable } from '@angular/core';
 })
 export class UserProfileResolverService implements Resolve<UserProfile> {
 
-  constructor(private _service: CompanyService) { }
+  constructor(private auth: AuthService) { }
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<UserProfile> {
     const id = route.paramMap.get('id');
-    return this._service.getUser(id);
+    return this.auth.getUser(id);
   }
 }

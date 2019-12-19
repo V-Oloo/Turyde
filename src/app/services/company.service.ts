@@ -32,15 +32,6 @@ export class CompanyService {
     return this.http.post(this.global._BaseUri + `/companies/routes/${companyId}/revoke`, routeId);
   }
 
-  getUsers(boundary: string, companyId: number) {
-    return this.http.get(this.global._BaseUri + `/users/list/${boundary}/` + companyId)
-                    .pipe(map((data: any) => data.result.data), shareReplay());
-  }
-
-  getUser(id: string) {
-    return this.http.get(this.global._BaseUri + `/users/${id}`).pipe(map((data: any) => data.result), shareReplay());
-  }
-
   getRoutes(companyId?) {
     return this.http.get(this.global._BaseUri + '/routes/list', companyId).pipe(map((data: any) => data.result.data), shareReplay());
   }

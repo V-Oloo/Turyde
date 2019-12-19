@@ -41,6 +41,10 @@ export class AuthService {
     return this.currentUserSubject;
 }
 
+public get UserSub(): any {
+  return this.userSubject;
+}
+
   public get userValue(): any {
     return this.userSubject.value;
 }
@@ -57,6 +61,19 @@ export class AuthService {
   createPassword(user: { password: any; token: any; userId: any; }) {
     return this.http.post<any>(this.global._BaseUri + '/users/confirmemail' , user);
  }
+
+ addUser(data: any) {
+  return this.http.post(this.global._BaseUri + '/users/add', data);
+}
+
+getUsers(boundary: string, companyId: number) {
+  return this.http.get(this.global._BaseUri + `/users/list/${boundary}/` + companyId)
+                  .pipe(map((data: any) => data.result.data), shareReplay());
+}
+
+getUser(id: string) {
+  return this.http.get(this.global._BaseUri + `/users/${id}`).pipe(map((data: any) => data.result), shareReplay());
+}
 
   loginUser(user: Login) {
     return this.http.post<any>(this.global._BaseUri + '/users/login', user)

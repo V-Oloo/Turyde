@@ -46,7 +46,6 @@ import { InternationalPhoneNumberModule } from 'ngx-international-phone-number';
 import { LandingpageComponent } from './landingpage/landingpage.component';
 import { Globals } from './global';
 import { CreatePasswordComponent } from './views/create-password/create-password.component';
-import { AddDriverComponent } from './views/add-driver.component';
 
 import { ToastrModule } from 'ngx-toastr';
 
@@ -78,7 +77,7 @@ import { ToastrModule } from 'ngx-toastr';
     RegisterCompanyComponent,
     LandingpageComponent,
     CreatePasswordComponent,
-    AddDriverComponent,
+
   ],
   providers: [
     Globals,

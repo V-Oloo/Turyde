@@ -1,23 +1,20 @@
-import { AuthService } from './../../services/auth.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-company-dashboard',
   templateUrl: './company-dashboard.component.html',
   styles: []
 })
-export class CompanyDashboardComponent implements OnInit, OnDestroy {
+export class CompanyDashboardComponent implements OnInit {
 
   dtOptions: DataTables.Settings = {};
   users: {};
   company;
   companyName;
-  dtTrigger: Subject<any> = new Subject();
 
-  constructor(private _route: ActivatedRoute) {}
-
+  constructor(private _route: ActivatedRoute, private router: Router) {}
+  returnUrl = this.router.url;
   ngOnInit() {
 
     this.dtOptions = {
@@ -34,11 +31,6 @@ export class CompanyDashboardComponent implements OnInit, OnDestroy {
         this.companyName = this.company.shortName;
     });
 
-  }
-
-  ngOnDestroy() {
-    // Do not forget to unsubscribe the event
-    // this.dtTrigger.unsubscribe();
   }
 
 }

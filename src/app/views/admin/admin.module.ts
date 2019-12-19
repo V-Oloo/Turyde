@@ -15,6 +15,7 @@ import { EditRoutesComponent } from './edit-routes.component';
     CommonModule,
     AdminRoutingModule,
     SharedModule
-  ]
+  ],
+  providers: []
 })
 export class AdminModule { }

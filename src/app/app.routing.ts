@@ -13,7 +13,6 @@ import { P500Component } from './views/error/500.component';
 import { LoginComponent } from './views/login/login.component';
 import { RegisterComponent } from './views/register/register.component';
 import { AuthGuard } from './guards/auth.guard';
-import { MainAuthGuard } from './guards/main-auth.guard';
 
 export const routes: Routes = [
   {
@@ -87,6 +86,10 @@ export const routes: Routes = [
           boundary: [Boundary.Turyde]
         },
         loadChildren: () => import('./views/admin/admin.module').then(m => m.AdminModule)
+      },
+      {
+        path: 'user',
+        loadChildren: () => import('./views/user/user.module').then(m => m.UserModule)
       },
       {
         path: 'company',

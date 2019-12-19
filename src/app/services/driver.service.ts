@@ -15,10 +15,6 @@ export class DriverService {
     return this.http.get(this.global._BaseUri + '/drivers/list/' + id).pipe(map((data: any) => data.result.data), shareReplay(), );
   }
 
-  addDriver(data: any) {
-    return this.http.post(this.global._BaseUri + '/users/add', data);
-  }
-
   uploadDriverDocs(id: string, data: DriverDocs) {
     return this.http.post<DriverDocs>(this.global._BaseUri + `/drivers/documents/${id}/upload`, data);
   }

@@ -7,12 +7,14 @@ import { CompanyListResolverService } from './company-list-resolver.service';
 import { CompaniesComponent } from './companies.component';
 import { RouteResolverService } from '../company/route-resolver.service';
 import { SingleRouteResolverService } from '../company/single-route-resolver.service';
+import { UsersResolverService } from '../user/users-resolver.service';
 
 
 const routes: Routes = [
   {
     path: '',
     component: DashboardComponent,
+    resolve: {usersList: UsersResolverService},
     data: {
       title: 'Admin Dashboard'
     }

@@ -7,7 +7,7 @@
         <div class="card-body box-profile">
           <form [formGroup]="routeForm">
             <div *ngIf="errMessage">{{errMessage}}</div>
-            <!-- {{routeForm.value | json}} -->
+            {{routeForm.value | json}}
             <div class="login-form-header text-center">
               <div class="login-header">
                   <h4 class="bold color-white">Update Route Price</h4>
@@ -43,8 +43,20 @@
             </div>
             <fieldset>
               <legend>Update Price:</legend>
-              <label>Peak</label>: <input type="text" class="form-control" formControlName="peak" placeholder="Peak Rate">
-              <label>off Peak</label>: <input type="text" class="form-control" formControlName="offPeak" placeholder="offPeak Rate">
+              <div class="row">
+                <div class="col-md-6">
+                  <label>Peak</label>
+                  <div class="form-group">
+                    <input type="text" class="form-control" formControlName="peak" placeholder="Peak Rate">
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <label>off Peak</label>
+                  <div class="form-group">
+                    <input type="text" class="form-control" formControlName="offPeak" placeholder="offPeak Rate">
+                  </div>
+                </div>
+              </div>
               <div class="modal-footer">
                 <button type="submit" (click)="onSubmit(routeForm.value)" class="btn btn-primary">update price</button>
               </div>

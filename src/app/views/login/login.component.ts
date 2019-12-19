@@ -15,14 +15,17 @@ export class LoginComponent implements OnInit {
   };
 
   public errMessage: string;
+  loading = false;
 
   constructor(private _service: AuthService, private _router: Router) { }
 
     ngOnInit() {}
 
     loginUser() {
+      this.loading = true;
       this._service.loginUser(this.loginForm).subscribe(
         (res: any) => {
+          this.loading = false;
           const boundary = res.result.me.boundary;
           if (boundary === 'TURYDE') {
             this._router.navigateByUrl('/admin');

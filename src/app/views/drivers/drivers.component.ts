@@ -1,4 +1,4 @@
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterStateSnapshot, Router } from '@angular/router';
 import { DriverService } from './../../services/driver.service';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subject } from 'rxjs';
@@ -21,9 +21,10 @@ export class DriversComponent implements OnInit {
   public status = 'suspended';
   constructor(
     private auth: AuthService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router: Router
     ) {}
-
+    returnUrl = this.router.url;
   ngOnInit(): void {
 
     this.dtOptions = {

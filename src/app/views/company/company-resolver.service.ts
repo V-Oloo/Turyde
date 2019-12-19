@@ -12,10 +12,15 @@ export class CompanyResolverService implements Resolve<Company> {
 
   constructor(private _service: CompanyService, private auth: AuthService) { }
 
-  currentUser = this.auth.currentUserValue;
-  companyId: number = this.currentUser.companyId;
-
+  currentUserSubject = this.auth.currentUserSub;
+  currentUser;
+  companyId: number;
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Company> {
+    const item = JSON.parse(localStorage.getItem('userContext'));
+    localStorage.setItem('userContext', JSON.stringify(item));
+    this.currentUserSubject.next(item);
+    this.currentUser = this.auth.currentUserValue;
+    this.companyId = this.currentUser.companyId;
     return this._service.getCompany(this.companyId);
   }
 }

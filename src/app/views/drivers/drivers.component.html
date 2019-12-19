@@ -6,7 +6,7 @@
 
                 <div class="col-6 col-sm-4 col-md mb-3 mb-xl-0 ">
                     <i class="fa fa-align-justify"></i> Drivers
-                    <button type="button" class="btn btn-pill btn-success pull-right " routerLink="/drivers/add-driver"><i class="fa fa-plus"></i>&nbsp;Add driver</button>
+                    <button type="button" class="btn btn-pill btn-success pull-right " [routerLink]="['/user/addUser']" [queryParams]="{returnUrl: returnUrl}"><i class="fa fa-plus"></i>&nbsp;Add driver</button>
                 </div>
 
               </div>

@@ -7,16 +7,18 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class DashboardComponent implements OnInit {
   dtOptions: DataTables.Settings = {};
+  users: {};
 
-  constructor(private auth: AuthService, private route: ActivatedRoute, private router: Router) {}
-
+  constructor(private _route: ActivatedRoute,  private router: Router) {}
+  returnUrl = this.router.url;
   ngOnInit(): void {
     this.dtOptions = {
       pagingType: 'full_numbers'
     };
-  //  this.route.data.subscribe((data: {companyList: Company}) => {
-  //     this.companies = data.companyList;
-  //  });
+    this._route.data.subscribe((data: { usersList: any }) => {
+      this.users = data.usersList;
+
+   });
   }
 
 }
